@@ -58,7 +58,10 @@ public class ActivityLogin extends AppCompatActivity {
     private CallbackManager callbackManager;
     private TextView info;
     private static final String TAG = ActivityLogin.class.getSimpleName();
+<<<<<<< HEAD
     //asdfasdfasdfasdf
+=======
+>>>>>>> origin/master
 
     DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
 
