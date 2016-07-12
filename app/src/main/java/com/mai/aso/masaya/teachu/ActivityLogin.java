@@ -59,7 +59,6 @@ public class ActivityLogin extends AppCompatActivity {
     private TextView info;
     private static final String TAG = ActivityLogin.class.getSimpleName();
 
-    ///push example
 
     DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
 
@@ -189,8 +188,8 @@ public class ActivityLogin extends AppCompatActivity {
 
                 //mRootRef.child(FirebaseInfo.CHILD_USERS).child(auth.getCurrentUser().getUid()).child(FirebaseInfo.USER_EMAIL).setValue();
                 Intent intent = new Intent(ActivityLogin.this, ActivityMainTab.class);
-                //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
             }
             @Override
