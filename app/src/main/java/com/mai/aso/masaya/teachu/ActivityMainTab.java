@@ -40,10 +40,10 @@ public class ActivityMainTab extends AppCompatActivity {
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private int[] tabIcon = {
-            R.drawable.ic_public,
-            R.drawable.ic_friend,
-            R.drawable.ic_education,
-            R.drawable.ic_profile
+            R.drawable.ic_public_2_white,
+            R.drawable.ic_friend_1_white,
+            R.drawable.ic_education_1,
+            R.drawable.ic_profile_1
     };
 
     @Override

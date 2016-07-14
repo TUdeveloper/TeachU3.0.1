@@ -91,7 +91,7 @@ public class ActivitySignup extends AppCompatActivity {
                                     Toast.makeText(ActivitySignup.this, "Authentication failed" + task.getException(),
                                             Toast.LENGTH_SHORT).show();
                                 }else {
-                                    mRootRef.child(FirebaseInfo.CHILD_USERS).child(auth.getCurrentUser().getUid()).child(FirebaseInfo.USER_EMAIL).setValue(email);
+                                    mRootRef.child(FirebaseInfo.CHILD_USERS).child(task.getResult().getUser().getUid()).child(FirebaseInfo.USER_EMAIL).setValue(email);
                                     Intent intent = new Intent(ActivitySignup.this, ActivityUserSetting.class);
                                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
