@@ -1,10 +1,13 @@
 package com.mai.aso.masaya.teachu;
 
 import android.content.Intent;
+import android.content.ContentResolver;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.ParcelFileDescriptor;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -36,7 +39,10 @@ import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
+
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
@@ -48,15 +54,24 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageMetadata;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+import com.google.firebase.storage.OnProgressListener;
+
 import com.mai.aso.masaya.teachu.info.FirebaseInfo;
 
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.BufferedInputStream;
+import java.io.FileDescriptor;
+import java.io.IOException;
 import java.io.InputStream;
+import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URI;
 import java.util.Arrays;
 import java.lang.Object;
 import java.util.logging.LogManager;
@@ -70,10 +85,15 @@ public class ActivityLogin extends AppCompatActivity {
     private FirebaseAuth auth;
     private FirebaseUser user;
     private FirebaseStorage storage;
+    private StorageReference mStorageReference;
+    private StorageReference mStorageReferenceImages;
     private ProgressBar progressBar;
     private Button btnSignup, btnLogin, btnReset;
     private LoginButton loginButton;
     private CallbackManager callbackManager;
+    private JSONObject storeObject;
+    private boolean permissionIntent = false;
+    private boolean imageUploaded = false;
     public String email, firstname, lastname, gender, birthday;
     private static final String TAG = ActivityLogin.class.getSimpleName();
 
@@ -95,7 +115,7 @@ public class ActivityLogin extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         user = FirebaseAuth.getInstance().getCurrentUser();
         storage = FirebaseStorage.getInstance();
-        final StorageReference mStorageRef = FirebaseStorage.getInstance().getReference();
+        //final StorageReference mStorageRef = FirebaseStorage.getInstance().getReference();
         //get firebase auth instance
         //if (auth.getCurrentUser() != null) {
         //    startActivity(new Intent(ActivityLogin.this, ActivityMainTab.class));
@@ -185,6 +205,7 @@ public class ActivityLogin extends AppCompatActivity {
                 //facebook login and add to firebase auth
                 handleFacebookAccessToken(loginResult.getAccessToken());
 
+                progressBar.setVisibility(View.VISIBLE);
                 GraphRequest request = GraphRequest.newMeRequest(
                         loginResult.getAccessToken(),
                         new GraphRequest.GraphJSONObjectCallback() {
@@ -195,18 +216,28 @@ public class ActivityLogin extends AppCompatActivity {
                                 lastname = jsonObject.optString("last_name");
                                 birthday = jsonObject.optString("birthday");
                                 gender = jsonObject.optString("gender");
+                                storeObject = response.getJSONObject();
+                                Log.d(TAG, "FacebookProfile:storeObject :" + storeObject);
+
                                 try {
                                     JSONObject data = response.getJSONObject();
+                                    storeObject = response.getJSONObject();
                                     if (data.has("picture")) {
-                                        String profilePicUrl = data.getJSONObject("picture").getJSONObject("data").getString("url");
-                                        Uri profileUri = Uri.parse(profilePicUrl);
+                                        String ResourceUrl = data.getJSONObject("picture").getJSONObject("data").getString("url");
+                                        URL ProfileUrl = new URL(ResourceUrl);
+                                        Log.d(TAG, "FacebookProfile:ResourceUrl: " + ResourceUrl);
+                                        Uri profileUri = Uri.parse(ResourceUrl);
+                                        Log.d(TAG, "FacebookProfile:ProfileUri: " + profileUri);
+                                        Bitmap profileBitmap = BitmapFactory.decodeStream(ProfileUrl.openConnection().getInputStream());
+                                        Log.d(TAG, "FacebookProfile:ProfileBitmap: " + profileBitmap.toString());
+                                        uploadFile(profileUri);
                                         //Bitmap profilePic = BitmapFactory.decodeStream(new URL(profilePicUrl).openConnection().getInputStream());
-                                        Log.d(TAG, "FacebookProfile:" + profilePicUrl);
-                                        mStorageRef.child("image").putFile(profileUri);
+                                        //imagesRef.putStream(bufferedInputStream);
                                     }
                                 }catch (Exception e){
                                     e.printStackTrace();
                                 }
+
                                 mRootRef.child(FirebaseInfo.CHILD_USERS).child(user.getUid()).child(FirebaseInfo.USER_EMAIL).setValue(email);
                                 mRootRef.child(FirebaseInfo.CHILD_USERS).child(user.getUid()).child(FirebaseInfo.USER_FIRST_NAME).setValue(firstname);
                                 mRootRef.child(FirebaseInfo.CHILD_USERS).child(user.getUid()).child(FirebaseInfo.USER_LAST_NAME).setValue(lastname);
@@ -220,6 +251,8 @@ public class ActivityLogin extends AppCompatActivity {
                 parameters.putString("fields", "id,name,email,gender,birthday,first_name,last_name,picture.type(large)");
                 request.setParameters(parameters);
                 request.executeAsync();
+                permissionIntent = true;
+                progressBar.setVisibility(View.GONE);
 
                 String accessToken = loginResult.getAccessToken().getToken();
 
@@ -287,6 +320,7 @@ public class ActivityLogin extends AppCompatActivity {
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client.connect();
+        Log.d(TAG, "onStart");
         Action viewAction = Action.newAction(
                 Action.TYPE_VIEW, // TODO: choose an action type.
                 "ActivityLogin Page", // TODO: Define a title for the content shown.
@@ -306,6 +340,7 @@ public class ActivityLogin extends AppCompatActivity {
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
+        Log.d(TAG, "onStop");
         Action viewAction = Action.newAction(
                 Action.TYPE_VIEW, // TODO: choose an action type.
                 "ActivityLogin Page", // TODO: Define a title for the content shown.
@@ -318,6 +353,43 @@ public class ActivityLogin extends AppCompatActivity {
         );
         AppIndex.AppIndexApi.end(client, viewAction);
         client.disconnect();
+    }
+
+    private void uploadFile(Uri pUri) {
+        mStorageReference = storage.getReferenceFromUrl("gs://project-66993355093102411.appspot.com/");
+        mStorageReferenceImages = mStorageReference.child("Images").child("profile.png");
+        //showHorizontalProgressDialog("Uploading", "Please wait...");
+        StorageReference uploadStorageReference = mStorageReference.child(pUri.getLastPathSegment());
+        //final UploadTask uploadTask = uploadStorageReference.putFile(pUri);
+        final UploadTask uploadTask = mStorageReferenceImages.putFile(pUri);
+
+        uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot pTaskSnapshot) {
+                Log.d(TAG, "uploadFileonSuccess:" + pTaskSnapshot);
+                Uri downloadUrl = pTaskSnapshot.getDownloadUrl();
+                //hideProgressDialog();
+                if (downloadUrl != null) {
+                    imageUploaded = true;
+                    //btnDownload.setEnabled(true);
+                    //Glide.with(context).load(downloadUrl).into(imageView);
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception pE) {
+                Log.d(TAG, "uploadFileonFailure:" + pE);
+            }
+        }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onProgress(UploadTask.TaskSnapshot pTaskSnapshot) {
+                Log.d(TAG, "uploadFileonProgress:" + pTaskSnapshot);
+
+                //progress中のアニメーションかな？たぶん
+                //int progress = (int) (100 * (float) pTaskSnapshot.getBytesTransferred() / pTaskSnapshot.getTotalByteCount());
+                //updateProgress(progress);
+            }
+        });
     }
 
     /*
