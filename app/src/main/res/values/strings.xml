@@ -40,6 +40,11 @@
     <string name="lbl_forgot_password">Forgot password?</string>
     <string name="forgot_password_msg">We just need your registered Email Id to sent you password reset instructions.</string>
 
+    <string-array name="spinner_gender_list">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Intersex</item>
+    </string-array>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

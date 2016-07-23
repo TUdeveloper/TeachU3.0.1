@@ -1,10 +1,12 @@
 package com.mai.aso.masaya.teachu;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.ContentResolver;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.ParcelFileDescriptor;
 import android.provider.MediaStore;
@@ -33,6 +35,7 @@ import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
+import com.facebook.login.widget.ProfilePictureView;
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.firebase.client.Firebase;
 import com.google.android.gms.appindexing.Action;
@@ -63,15 +66,20 @@ import com.mai.aso.masaya.teachu.info.FirebaseInfo;
 
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.FileDescriptor;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URI;
+import java.net.URLConnection;
 import java.util.Arrays;
 import java.lang.Object;
 import java.util.logging.LogManager;
@@ -92,9 +100,11 @@ public class ActivityLogin extends AppCompatActivity {
     private LoginButton loginButton;
     private CallbackManager callbackManager;
     private JSONObject storeObject;
+    private ProgressDialog pDialog;
+    private Uri profileUri;
     private boolean permissionIntent = false;
     private boolean imageUploaded = false;
-    public String email, firstname, lastname, gender, birthday;
+    public String email, firstname, lastname, gender, birthday, ResourceUrl;
     private static final String TAG = ActivityLogin.class.getSimpleName();
 
 
@@ -117,6 +127,8 @@ public class ActivityLogin extends AppCompatActivity {
         storage = FirebaseStorage.getInstance();
         //final StorageReference mStorageRef = FirebaseStorage.getInstance().getReference();
         //get firebase auth instance
+        //ここから４つ下までは、もし権限があればすぐにメインのタブに飛ぶ
+        //今は開発段階なので、コメントアウトしている
         //if (auth.getCurrentUser() != null) {
         //    startActivity(new Intent(ActivityLogin.this, ActivityMainTab.class));
         //    finish();
@@ -138,6 +150,7 @@ public class ActivityLogin extends AppCompatActivity {
         //get firebase auth instance
         auth = FirebaseAuth.getInstance();
 
+        //登録画面へ飛ぶ
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -145,6 +158,7 @@ public class ActivityLogin extends AppCompatActivity {
             }
         });
 
+        //パスワード再設定画面へ飛ぶ
         btnReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -152,6 +166,7 @@ public class ActivityLogin extends AppCompatActivity {
             }
         });
 
+        //メールとパスワードでログイン
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -195,7 +210,7 @@ public class ActivityLogin extends AppCompatActivity {
 
         //info.setText("INIT:");
 
-        //facebook log in
+        //facebookでログイン
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(final LoginResult loginResult) {
@@ -219,25 +234,44 @@ public class ActivityLogin extends AppCompatActivity {
                                 storeObject = response.getJSONObject();
                                 Log.d(TAG, "FacebookProfile:storeObject :" + storeObject);
 
+                                //ProfilePictureView profilePictureView;
+                                //profilePictureView;
                                 try {
-                                    JSONObject data = response.getJSONObject();
-                                    storeObject = response.getJSONObject();
-                                    if (data.has("picture")) {
-                                        String ResourceUrl = data.getJSONObject("picture").getJSONObject("data").getString("url");
-                                        URL ProfileUrl = new URL(ResourceUrl);
-                                        Log.d(TAG, "FacebookProfile:ResourceUrl: " + ResourceUrl);
-                                        Uri profileUri = Uri.parse(ResourceUrl);
-                                        Log.d(TAG, "FacebookProfile:ProfileUri: " + profileUri);
-                                        Bitmap profileBitmap = BitmapFactory.decodeStream(ProfileUrl.openConnection().getInputStream());
-                                        Log.d(TAG, "FacebookProfile:ProfileBitmap: " + profileBitmap.toString());
-                                        uploadFile(profileUri);
+                                    if (storeObject.has("picture")) {
+                                        //Log.d(TAG, "FacebookProfile:storeObject2 :" + storeObject);
+                                        //String ResourceUrl = storeObject.getJSONObject("picture").getJSONObject("data").getString("url");
+                                        //Bitmap bitmap = DownloadImage(ResourceUrl);
+                                        //Bitmap bitmap = BitmapFactory.decodeStream(new URL(ResourceUrl).openConnection().getInputStream());
+                                        //ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                                        //bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+                                        //byte[] profileData = baos.toByteArray();
+                                        //uploadBitmap(profileData);
+                                        //InputStream stream = new FileInputStream(new File(ResourceUrl));
+                                        //uploadStream(stream);
+                                        //URL ProfileUrl = new URL(ResourceUrl.toString());
+                                        //HttpURLConnection connection = (HttpURLConnection) ProfileUrl.openConnection();
+                                        //connection.setDoInput(true);
+                                        //connection.connect();
+                                        //InputStream inputStream = connection.getInputStream();
+                                        //uploadStream(inputStream);
+
+                                        //Bitmap bitmap = getBitmapFromURL(ResourceUrl);
+                                        //Log.d(TAG, "FacebookProfile:ResourceUrl: " + ResourceUrl);
+                                        //profileUri = Uri.parse(ResourceUrl);
+                                        //Log.d(TAG, "FacebookProfile:ProfileUri: " + profileUri);
+                                        //Bitmap profileBitmap = BitmapFactory.decodeStream(ProfileUrl.openConnection().getInputStream());
+                                        //Log.d(TAG, "FacebookProfile:ProfileBitmap: " + profileBitmap.toString());
+                                        //uploadFile(profileUri);
                                         //Bitmap profilePic = BitmapFactory.decodeStream(new URL(profilePicUrl).openConnection().getInputStream());
                                         //imagesRef.putStream(bufferedInputStream);
+
+
                                     }
                                 }catch (Exception e){
                                     e.printStackTrace();
                                 }
-
+                                //Facebookでログインした後にfirebaseに以下の情報を登録しているemail, first name last name birthday gender
+                                //増やす可能性あり
                                 mRootRef.child(FirebaseInfo.CHILD_USERS).child(user.getUid()).child(FirebaseInfo.USER_EMAIL).setValue(email);
                                 mRootRef.child(FirebaseInfo.CHILD_USERS).child(user.getUid()).child(FirebaseInfo.USER_FIRST_NAME).setValue(firstname);
                                 mRootRef.child(FirebaseInfo.CHILD_USERS).child(user.getUid()).child(FirebaseInfo.USER_LAST_NAME).setValue(lastname);
@@ -251,12 +285,16 @@ public class ActivityLogin extends AppCompatActivity {
                 parameters.putString("fields", "id,name,email,gender,birthday,first_name,last_name,picture.type(large)");
                 request.setParameters(parameters);
                 request.executeAsync();
+
                 permissionIntent = true;
                 progressBar.setVisibility(View.GONE);
 
                 String accessToken = loginResult.getAccessToken().getToken();
+                //ResourceUrl = storeObject.optJSONObject("picture").optJSONObject("data").optString("url");
+                //new LoadImage().execute(ResourceUrl);
 
-                Intent intent = new Intent(ActivityLogin.this, ActivityMainTab.class);
+                //他のアクティビティへ飛ぶ
+                Intent intent = new Intent(ActivityLogin.this, ActivityUserSetting.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
@@ -356,12 +394,16 @@ public class ActivityLogin extends AppCompatActivity {
     }
 
     private void uploadFile(Uri pUri) {
-        mStorageReference = storage.getReferenceFromUrl("gs://project-66993355093102411.appspot.com/");
-        mStorageReferenceImages = mStorageReference.child("Images").child("profile.png");
+        storage = FirebaseStorage.getInstance();
+        //mStorageReference = storage.getReferenceFromUrl("gs://project-66993355093102411.appspot.com/");
+        mStorageReference = storage.getReference();
+        mStorageReferenceImages = mStorageReference.child("Images/profile.jpg");
         //showHorizontalProgressDialog("Uploading", "Please wait...");
-        StorageReference uploadStorageReference = mStorageReference.child(pUri.getLastPathSegment());
+        //StorageReference uploadStorageReference = mStorageReference.child(pUri.getLastPathSegment());
         //final UploadTask uploadTask = uploadStorageReference.putFile(pUri);
         final UploadTask uploadTask = mStorageReferenceImages.putFile(pUri);
+        Log.d(TAG, "FacebookProfile:pUri: " + pUri);
+        Log.d(TAG, "FacebookProfile:Reference: " + mStorageReferenceImages);
 
         uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
@@ -395,13 +437,126 @@ public class ActivityLogin extends AppCompatActivity {
     /*
     public static Bitmap getFacebookProfilePicture(String userID){
         URL imageURL = new URL("https://graph.facebook.com/" + userID + "/picture?type=large");
-        Bitmap bitmap = BitmapFactory.decodeStream(imageUrl.openConnection().getInputStream());
+        Bitmap bitmap = BitmapFactory.decodeStream(imageURL.openConnection().getInputStream());
 
+        return bitmap;
+    }*/
+
+    //ここから先は、Facebookのプロフィール写真をfirebaseに読み込もうとしたときに使った残骸
+    public static Bitmap getBitmapFromURL(String src) {
+        try {
+            URL url = new URL(src);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setDoInput(true);
+            connection.connect();
+            InputStream input = connection.getInputStream();
+            Bitmap myBitmap = BitmapFactory.decodeStream(input);
+            return myBitmap;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    //Bitmap bitmap = getFacebookProfilePicture(userId);
+
+    private void uploadStream(InputStream stream){
+        storage = FirebaseStorage.getInstance();
+        //mStorageReference = storage.getReferenceFromUrl("gs://project-66993355093102411.appspot.com/");
+        mStorageReference = storage.getReference();
+        mStorageReferenceImages = mStorageReference.child("Images/profile.jpg");
+
+        UploadTask uploadTask = mStorageReferenceImages.putStream(stream);
+        uploadTask.addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                // Handle unsuccessful uploads
+            }
+        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
+                Uri downloadUrl = taskSnapshot.getDownloadUrl();
+            }
+        });
+    }
+
+    private void uploadBitmap(byte[] data){
+        storage = FirebaseStorage.getInstance();
+        //mStorageReference = storage.getReferenceFromUrl("gs://project-66993355093102411.appspot.com/");
+        mStorageReference = storage.getReference();
+        mStorageReferenceImages = mStorageReference.child("Images/profile.jpg");
+
+        UploadTask uploadTask = mStorageReferenceImages.putBytes(data);
+        uploadTask.addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                Log.d(TAG, "uploadFialure:");
+                // Handle unsuccessful uploads
+            }
+        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                Log.d(TAG, "uploadSucess:");
+                // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
+                Uri downloadUrl = taskSnapshot.getDownloadUrl();
+            }
+        });
+    }
+
+    private InputStream OpenHttpConnection(String urlString) throws IOException {
+        InputStream in = null;
+        int response = -1;
+
+        URL url = new URL(urlString);
+        URLConnection conn = url.openConnection();
+
+        if (!(conn instanceof HttpURLConnection))
+            throw new IOException("Not an HTTP connection");
+
+        try {
+            HttpURLConnection httpConn = (HttpURLConnection) conn;
+            httpConn.setAllowUserInteraction(false);
+            httpConn.setInstanceFollowRedirects(true);
+            httpConn.setRequestMethod("GET");
+            httpConn.connect();
+            response = httpConn.getResponseCode();
+            if (response == HttpURLConnection.HTTP_OK) {
+                in = httpConn.getInputStream();
+            }
+        } catch (Exception ex) {
+            throw new IOException("Error connecting");
+        }
+        return in;
+    }
+
+    private Bitmap DownloadImage(String URL) {
+        Bitmap bitmap = null;
+        InputStream in = null;
+        try {
+            in = OpenHttpConnection(URL);
+            bitmap = BitmapFactory.decodeStream(in);
+            in.close();
+        } catch (IOException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
         return bitmap;
     }
 
-    Bitmap bitmap = getFacebookProfilePicture(userId);
-    */
+    private class LoadImage extends AsyncTask<String, String, String>{
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+        @Override
+        protected String doInBackground(String... params) {
+                //String ResourceUrl2 = storeObject.getJSONObject("picture").getJSONObject("data").getString("url");
+                String sample = params.toString();
+                profileUri = Uri.parse(sample);
+                Log.d(TAG, "AsyncTask:" + sample);
+                uploadFile(profileUri);
+            return null;
+        }
 
-
+    }
 }

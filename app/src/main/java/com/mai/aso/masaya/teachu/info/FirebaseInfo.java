@@ -13,4 +13,8 @@ public class FirebaseInfo {
     public static final String USER_BIRTHDAY="birthday";
     public static final String USER_EDUCATION="education";
     public static final String USER_GENDER="gender";
+    public static final String USER_COUNTRY="country";
+    public static final String USER_NATIVE_LANGUAGE="native_language";
+    public static final String USER_LEARN_LANGUAGE="learn_language";
+    public static final String USER_LEARN_LANGUAGE2="learn_language2";
 }
