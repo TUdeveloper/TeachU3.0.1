@@ -39,6 +39,10 @@
     <string name="btn_sign_out">Sign Out</string>
     <string name="lbl_forgot_password">Forgot password?</string>
     <string name="forgot_password_msg">We just need your registered Email Id to sent you password reset instructions.</string>
+    <string name="profile_photo">profile.png</string>
+    <string name="profile_failed">Error to get photo</string>
+    <string name="profile_upload_success">Success to upload your profile image</string>
+    <string name="profile_upload_fail">Fail to upload your profile image</string>
 
     <string-array name="spinner_gender_list">
         <item>Male</item>

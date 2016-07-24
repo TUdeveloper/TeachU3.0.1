@@ -167,7 +167,7 @@ public class ActivityLanguageSetting extends AppCompatActivity {
                 mRootRef.child(FirebaseInfo.CHILD_USERS).child(user.getUid()).child(FirebaseInfo.USER_LEARN_LANGUAGE2).setValue(setLearnLanguage2);
                 progressBar.setVisibility(View.GONE);
 
-                Intent intent = new Intent(ActivityLanguageSetting.this, ActivityMainTab.class);
+                Intent intent = new Intent(ActivityLanguageSetting.this, ActivityProfileSetting.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);

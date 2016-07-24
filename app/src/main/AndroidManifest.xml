@@ -64,6 +64,11 @@
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
         <activity
+            android:name=".ActivityProfileSetting"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity
             android:name=".ActivitySignup"
             android:label="@string/title_activity_login"
             android:theme="@style/AppTheme.NoActionBar" />
