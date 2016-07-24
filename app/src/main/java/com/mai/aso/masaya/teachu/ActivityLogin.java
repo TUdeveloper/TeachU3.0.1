@@ -108,7 +108,7 @@ public class ActivityLogin extends AppCompatActivity {
     private static final String TAG = ActivityLogin.class.getSimpleName();
 
     //comment comment
-
+    //ブランチをきる
     DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
