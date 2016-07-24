@@ -107,8 +107,8 @@ public class ActivityLogin extends AppCompatActivity {
     public String email, firstname, lastname, gender, birthday, ResourceUrl;
     private static final String TAG = ActivityLogin.class.getSimpleName();
 
-    //COMMENT
 
+    //ASO MASAYA
     DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
