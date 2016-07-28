@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toolbar;
 
+import com.firebase.client.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -36,12 +37,12 @@ public class FragmentPublic extends Fragment {
     private static final String ARG_SECTION_NUMBER = "section_number";
     private FirebaseAuth auth;
     private FirebaseUser user;
+    private DatabaseReference refUser;
     private String Name;
-    private View textUid, textName, textEmail, textGender, textBirthday;
+    private TextView textUid, textName, textEmail, textGender, textBirthday;
     private static final String TAG = FragmentPublic.class.getSimpleName();
 
     DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
-
     public FragmentPublic() {
     }
 
@@ -64,22 +65,46 @@ public class FragmentPublic extends Fragment {
         ActionBar actionBar = ((AppCompatActivity)getActivity()).getSupportActionBar();
         actionBar.setTitle(R.string.titlePublic);
 
-        View v = inflater.inflate(R.layout.fragment_public, container, false);
-        textUid = v.findViewById(R.id.text_uid);
-        textName = v.findViewById(R.id.text_user_name);
-        textEmail = v.findViewById(R.id.text_email);
-        textGender = v.findViewById(R.id.text_gender);
-        textBirthday = v.findViewById(R.id.text_birthday);
+        View view = inflater.inflate(R.layout.fragment_public, container, false);
+
+        textUid = (TextView)getActivity().findViewById(R.id.text_uid);
+        textName = (TextView)getActivity().findViewById(R.id.text_user_name);
+        textEmail = (TextView)getActivity().findViewById(R.id.text_email);
+        textGender = (TextView)getActivity().findViewById(R.id.text_gender);
+        textBirthday = (TextView)getActivity().findViewById(R.id.text_birthday);
 
         auth = FirebaseAuth.getInstance();
         user = FirebaseAuth.getInstance().getCurrentUser();
-        String Uid = user.getUid();
-        Name = mRootRef.child(FirebaseInfo.CHILD_USERS).child(user.getUid()).child(FirebaseInfo.USER_FIRST_NAME).toString();
-        Log.d(TAG, "UserID: " + Uid);
-        Log.d(TAG, "UserName: " + Name);
+        refUser = mRootRef.child(FirebaseInfo.CHILD_USERS).child(user.getUid());
+        refUser.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String Uid = (String)dataSnapshot.child(user.getUid()).getValue();
+                String Name = (String)dataSnapshot.child(FirebaseInfo.USER_FIRST_NAME).getValue();
+                String Email = (String)dataSnapshot.child(FirebaseInfo.USER_EMAIL).getValue();
+                String Gender = (String)dataSnapshot.child(FirebaseInfo.USER_GENDER).getValue();
+                String Birthday = (String)dataSnapshot.child(FirebaseInfo.USER_BIRTHDAY).getValue();
+                Log.d(TAG, "UserName: " + Name);
 
-        ((TextView)textUid).setText(Uid);
-        ((TextView)textName).setText(Name);
+                //textUid.setText(Uid);
+                //textName.setText(Name);
+                //textEmail.setText(Email);
+                //textGender.setText(Gender);
+                //textBirthday.setText(Birthday);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        //String Uid = user.getUid();
+        //Name = mRootRef.child(FirebaseInfo.CHILD_USERS).child(user.getUid()).child(FirebaseInfo.USER_FIRST_NAME).toString();
+        //Log.d(TAG, "UserID: " + Uid);
+        //Log.d(TAG, "UserName: " + Name);
+
+        //((TextView)textUid).setText(Uid);
+        //((TextView)textName).setText(Name);
         //View rootView = inflater.inflate(R.layout.fragment_fragment_public, container, false);
         //TextView textView = (TextView) rootView.findViewById(R.id.section_label);
         //textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
@@ -87,6 +112,13 @@ public class FragmentPublic extends Fragment {
         return inflater.inflate(R.layout.fragment_public, container, false);
     }
 
+    public void changeText(){
+        textName.setText("test");
+    }
+
+
+    //refUser.CompletionLi
+    //addValueEventListener(new ValueEventListener()
     //@Override
     //public void onResume(){
     //    super.onResume();
