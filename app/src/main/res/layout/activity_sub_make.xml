@@ -5,170 +5,116 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#EEEEEE"
-    tools:context="com.mai.aso.masaya.teachu.SubMake"
-    android:id="@+id/make">
+    tools:context="com.mai.aso.masaya.teachu.SubMake">
 
     <android.support.v7.widget.CardView
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:background="#fffafa"
-        android:layout_margin="10dp"
-        android:id="@+id/card_view"
-        android:layout_width="match_parent"
-        android:layout_height="350dp"
+        android:id="@+id/meeting_card"
+        android:layout_width="360dp"
+        android:layout_height="210dp"
         card_view:cardCornerRadius="3dp"
-        android:elevation="20dp"
-        android:layout_weight="1">
+        android:elevation="15dp"
+        android:layout_centerHorizontal="true">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="10dp"
-                android:id="@+id/white"></LinearLayout>
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:id="@+id/meeting_card"
-                android:layout_below="@+id/white">
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/imageView"
-                        android:layout_weight="0.5"
-                        android:src="@drawable/rabbit" />
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/imageView2"
-                        android:layout_weight="1"
-                        android:src="@drawable/meeting"
-                        android:adjustViewBounds="false"/>
-
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.7" />
-
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_below="@+id/meeting_card"
-                android:id="@+id/profile_image" >
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.75"></LinearLayout>
-
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/imageView3"
-                        android:src="@drawable/profile1"
-                        android:layout_weight="1"/>
-
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="10dp"
-                        android:layout_height="match_parent" />
-
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/imageView4"
-                        android:src="@drawable/profile2"
-                        android:layout_weight="1" />
-
-                    <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="20dp"
-                        android:layout_height="match_parent" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="vertical"
+            <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_alignParentEnd="false"
-                android:layout_below="@+id/profile_image">
+                android:id="@+id/imageView"
+                android:src="@drawable/card_background_2"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="false"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentRight="false"
+                android:layout_alignWithParentIfMissing="false"
+                android:layout_alignParentEnd="false" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/imageView5"
-                    android:src="@drawable/line" />
+            <ImageView
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:id="@+id/imageView2"
+                android:src="@drawable/profile1"
+                android:layout_marginLeft="55dp"
+                android:layout_marginStart="55dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="35dp" />
 
-                <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/editText2"
-                    android:textIsSelectable="false"
-                    android:hint="What to learn"
-                    android:contextClickable="true" />
+            <ImageView
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:id="@+id/imageView3"
+                android:src="@drawable/profile2"
+                android:layout_marginRight="55dp"
+                android:layout_marginEnd="55dp"
+                android:layout_alignTop="@+id/imageView2"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
 
-                <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:inputType="date"
-                    android:ems="10"
-                    android:id="@+id/editText3"
-                    android:hint="When to meet" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Mai Oobayashi"
+                android:id="@+id/textView2"
+                android:layout_below="@+id/imageView2"
+                android:layout_alignLeft="@+id/imageView2"
+                android:layout_alignStart="@+id/imageView2" />
 
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="time"
-                    android:ems="10"
-                    android:id="@+id/editText4"
-                    android:layout_gravity="right" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Masaya Aso"
+                android:id="@+id/textView3"
+                android:layout_below="@+id/imageView3"
+                android:layout_alignLeft="@+id/imageView3"
+                android:layout_alignStart="@+id/imageView3" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:maxLines="3"
-                    android:padding="3dp"
-                    android:text="Shibuya, Bosch Cafe"
-                    android:textColor="#666"
-                    android:textSize="14dp"
-                    android:id="@+id/textView2" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="2000 yen / hour"
+                android:id="@+id/textView16"
+                android:layout_alignParentBottom="true"
+                android:layout_toRightOf="@+id/imageView2"
+                android:layout_toEndOf="@+id/imageView2" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:maxLines="3"
-                    android:padding="3dp"
-                    android:text="2000 yen / hour"
-                    android:textColor="#666"
-                    android:textSize="14dp"
-                    android:id="@+id/textView3" />
-            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="2016/08/30 14:00 - 16:30"
+                android:id="@+id/textView17"
+                android:layout_above="@+id/textView16"
+                android:layout_alignLeft="@+id/textView16"
+                android:layout_alignStart="@+id/textView16" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Shibuya, Bosch Cafe"
+                android:id="@+id/textView18"
+                android:layout_above="@+id/textView17"
+                android:layout_alignLeft="@+id/textView17"
+                android:layout_alignStart="@+id/textView17" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="English"
+                android:id="@+id/textView19"
+                android:layout_above="@+id/textView18"
+                android:layout_alignLeft="@+id/textView18"
+                android:layout_alignStart="@+id/textView18" />
 
         </RelativeLayout>
 

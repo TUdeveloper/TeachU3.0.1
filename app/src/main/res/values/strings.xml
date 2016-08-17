@@ -5,9 +5,9 @@
     <string name="action_search">Search</string>
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="titlePublic">Public</string>
-    <string name="titleFriend">Friend</string>
+    <string name="titleChat">Chat</string>
     <string name="titleEducation">Education</string>
-    <string name="titleProfile">Profile</string>
+    <string name="titleHome">Home</string>
 
     <string name="action_sign_in_short">Register</string>
     <string name="email">Email</string>
@@ -53,4 +53,49 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="chat">chat</string>
+
+    <!-- For Teacher Find Horibe edited-->
+    <string-array name="find_teacher_subject">
+        <item>English</item>
+        <item>Japanese</item>
+        <item>Chinese</item>
+        <item>Spanish</item>
+    </string-array>
+    <string-array name="find_teacher_gender">
+        <item>Male</item>
+        <item>Femail</item>
+    </string-array>
+    <string-array name="find_teacher_teacher_student">
+        <item>Teacher</item>
+        <item>Student</item>
+    </string-array>
+    <string-array name="find_teacher_location">
+        <item>Hokkaido</item>
+        <item>Touhoku</item>
+        <item>Kanto</item>
+        <item>Toukai</item>
+        <item>Hokuriku</item>
+        <item>Cyugoku</item>
+        <item>Shikoku</item>
+        <item>Kyu-syu-</item>
+    </string-array>
+    <string-array name="find_teacher_feelow">
+        <item>0</item>
+        <item>1000</item>
+        <item>2000</item>
+        <item>3000</item>
+        <item>4000</item>
+        <item>5000</item>
+        <item>6000</item>
+    </string-array>
+    <string-array name="find_teacher_feehigh">
+        <item>0</item>
+        <item>1000</item>
+        <item>2000</item>
+        <item>3000</item>
+        <item>4000</item>
+        <item>5000</item>
+        <item>6000</item>
+    </string-array>
+
 </resources>

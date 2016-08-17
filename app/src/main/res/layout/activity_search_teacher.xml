@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#DCDCDC">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/textView5"
+        android:layout_gravity="center_horizontal" />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner"
+        android:layout_gravity="right"
+        android:layout_below="@+id/search_result"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="99dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/textView7"
+        android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Find your partners"
+        android:id="@+id/search_result"
+        android:layout_gravity="right"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/textView4"
+        android:layout_alignStart="@+id/textView4" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Let&apos;s find teachers!"
+        android:id="@+id/textView4"
+        android:layout_below="@+id/textView5"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Teacher/Student"
+        android:id="@+id/textView6"
+        android:layout_marginTop="36dp"
+        android:layout_below="@+id/textView4"
+        android:layout_toRightOf="@+id/textView5"
+        android:layout_toEndOf="@+id/textView5"
+        android:layout_marginLeft="23dp"
+        android:layout_marginStart="23dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Subject"
+        android:id="@+id/textView8"
+        android:layout_below="@+id/textView6"
+        android:layout_alignLeft="@+id/textView6"
+        android:layout_alignStart="@+id/textView6"
+        android:layout_marginTop="38dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Gender"
+        android:id="@+id/textView9"
+        android:layout_below="@+id/textView8"
+        android:layout_alignLeft="@+id/textView8"
+        android:layout_alignStart="@+id/textView8"
+        android:layout_marginTop="35dp" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner2"
+        android:layout_alignTop="@+id/textView6"
+        android:layout_toRightOf="@+id/textView6"
+        android:layout_toEndOf="@+id/textView6"
+        android:entries="@array/find_teacher_teacher_student"
+        android:focusable="true" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner3"
+        android:entries="@array/find_teacher_subject"
+        android:layout_alignBaseline="@+id/textView8"
+        android:layout_alignBottom="@+id/textView8"
+        android:layout_alignLeft="@+id/spinner2"
+        android:layout_alignStart="@+id/spinner2" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner4"
+        android:layout_alignTop="@+id/textView9"
+        android:layout_alignLeft="@+id/spinner3"
+        android:layout_alignStart="@+id/spinner3"
+        android:entries="@array/find_teacher_gender" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Location"
+        android:id="@+id/textView23"
+        android:layout_below="@+id/spinner4"
+        android:layout_alignLeft="@+id/textView9"
+        android:layout_alignStart="@+id/textView9" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner5"
+        android:entries="@array/find_teacher_location"
+        android:layout_below="@+id/spinner4"
+        android:layout_toRightOf="@+id/textView6"
+        android:layout_toEndOf="@+id/textView6" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Fee"
+        android:id="@+id/textView32"
+        android:layout_below="@+id/spinner5"
+        android:layout_alignLeft="@+id/textView23"
+        android:layout_alignStart="@+id/textView23" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner6"
+        android:layout_alignTop="@+id/textView32"
+        android:layout_alignLeft="@+id/spinner5"
+        android:layout_alignStart="@+id/spinner5"
+        android:layout_alignRight="@+id/search_result"
+        android:layout_alignEnd="@+id/search_result"
+        android:entries="@array/find_teacher_feelow"/>
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner7"
+        android:layout_below="@+id/spinner5"
+        android:layout_alignRight="@+id/spinner5"
+        android:layout_alignEnd="@+id/spinner5"
+        android:layout_toRightOf="@+id/spinner6"
+        android:layout_toEndOf="@+id/spinner6"
+        android:entries="@array/find_teacher_gender"/>
+
+</RelativeLayout>

@@ -1,37 +1,23 @@
 package com.mai.aso.masaya.teachu;
 
-import android.graphics.drawable.Drawable;
-import android.nfc.Tag;
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.app.NotificationCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-
 public class ActivityMainTab extends AppCompatActivity {
+
     /**
      * The {@link ViewPager} that will host the section contents.
      */
@@ -40,9 +26,8 @@ public class ActivityMainTab extends AppCompatActivity {
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private int[] tabIcon = {
-            R.drawable.ic_public_2_white,
-            R.drawable.ic_friend_1_white,
-            R.drawable.ic_education_1,
+            R.drawable.ic_public_2,
+            R.drawable.ic_chat_1,
             R.drawable.ic_profile_1
     };
 
@@ -55,7 +40,6 @@ public class ActivityMainTab extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         // Set up the ViewPager with the sections adapter.
         viewPager = (ViewPager) findViewById(R.id.container);
         setupViewPager(viewPager);
@@ -77,20 +61,20 @@ public class ActivityMainTab extends AppCompatActivity {
         });*/
     }
 
+    private void setupViewPager(ViewPager viewPager){
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        adapter.addFrag(new FragmentPublic(),"One");
+        adapter.addFrag(new FragmentChat(), "Two");
+        //adapter.addFrag(new FragmentEducation(), "Three");
+        adapter.addFrag(new FragmentHome(), "Three");
+        viewPager.setAdapter(adapter);
+    }
+
     private void setupTabIcons(){
         tabLayout.getTabAt(0).setIcon(tabIcon[0]);
         tabLayout.getTabAt(1).setIcon(tabIcon[1]);
         tabLayout.getTabAt(2).setIcon(tabIcon[2]);
-        tabLayout.getTabAt(3).setIcon(tabIcon[3]);
-    }
-
-    private void setupViewPager(ViewPager viewPager){
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFrag(new FragmentPublic(), "One");
-        adapter.addFrag(new FragmentFriend(), "Two");
-        adapter.addFrag(new FragmentEducation(), "Three");
-        adapter.addFrag(new FragmentProfile(), "Four");
-        viewPager.setAdapter(adapter);
+        //tabLayout.getTabAt(3).setIcon(tabIcon[3]);
     }
 
     @Override
@@ -115,7 +99,7 @@ public class ActivityMainTab extends AppCompatActivity {
     }
 
 
-    public static class ViewPagerAdapter extends FragmentStatePagerAdapter {
+    public static class ViewPagerAdapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();
 
@@ -126,15 +110,14 @@ public class ActivityMainTab extends AppCompatActivity {
         @Override
         public Fragment getItem(int position){
             mFragmentList.get(position);
+            Log.d(TAG, "FragmentPosition: " + position);
             switch (position) {
                 case 0:
                     return FragmentPublic.newInstance(position);
                 case 1:
-                    return FragmentFriend.newInstance(position);
+                    return FragmentChat.newInstance(position);
                 case 2:
-                    return FragmentEducation.newInstance(position);
-                case 3:
-                    return FragmentProfile.newInstance(position);
+                    return FragmentHome.newInstance(position);
                 default:
                     return null;
             }//return mFragmentList.get(position);
@@ -142,6 +125,7 @@ public class ActivityMainTab extends AppCompatActivity {
 
         @Override
         public int getCount() {
+            //return 3;
             return mFragmentList.size();
         }
 
@@ -154,6 +138,7 @@ public class ActivityMainTab extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             return null; //mFragmentTitleList.get(position);
         }
+
 
     }
 

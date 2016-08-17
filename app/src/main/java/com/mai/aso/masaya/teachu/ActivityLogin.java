@@ -2,87 +2,61 @@ package com.mai.aso.masaya.teachu;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.ContentResolver;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.ParcelFileDescriptor;
-import android.provider.MediaStore;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 import com.facebook.appevents.AppEventsLogger;
-import com.facebook.FacebookSdk;
-import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
-
-import com.facebook.login.widget.ProfilePictureView;
-import com.fasterxml.jackson.databind.util.JSONPObject;
-import com.firebase.client.Firebase;
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FacebookAuthCredential;
-import com.google.firebase.auth.FirebaseAuthProvider;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageMetadata;
+import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.google.firebase.storage.OnProgressListener;
-
 import com.mai.aso.masaya.teachu.info.FirebaseInfo;
-
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileDescriptor;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URI;
 import java.net.URLConnection;
 import java.util.Arrays;
-import java.lang.Object;
-import java.util.logging.LogManager;
 
 /**
  * Created by MasayaAso on 7/3/16.
@@ -99,13 +73,15 @@ public class ActivityLogin extends AppCompatActivity {
     private Button btnSignup, btnLogin, btnReset;
     private LoginButton loginButton;
     private CallbackManager callbackManager;
+    private JSONArray educationArray;
     private JSONObject storeObject;
     private ProgressDialog pDialog;
     private Uri profileUri;
     private boolean permissionIntent = false;
     private boolean imageUploaded = false;
-    public String email, firstname, lastname, gender, birthday, ResourceUrl;
+    public String email, firstname, lastname, gender, birthday, school, ResourceUrl;
     private static final String TAG = ActivityLogin.class.getSimpleName();
+    private static final String SCHOOL = "school";
 
     //comment comment
     //ブランチをきる
@@ -134,7 +110,6 @@ public class ActivityLogin extends AppCompatActivity {
         //    startActivity(new Intent(ActivityLogin.this, ActivityMainTab.class));
         //    finish();
         //}
-
         //set the view
         setContentView(R.layout.activity_login);
 
@@ -232,11 +207,23 @@ public class ActivityLogin extends AppCompatActivity {
                                 lastname = jsonObject.optString("last_name");
                                 birthday = jsonObject.optString("birthday");
                                 gender = jsonObject.optString("gender");
+                                try {
+                                    educationArray = jsonObject.getJSONArray("education");
+                                    for (int i = 0; i < educationArray.length(); i++){
+                                        JSONObject educationObject = educationArray.getJSONObject(i);
+                                        JSONObject school = educationObject.getJSONObject("school");
+                                        String school_name = school.getString("name");
+                                        Log.d(TAG, "SchoolName :" + school_name);
+                                    }
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
                                 storeObject = response.getJSONObject();
                                 Log.d(TAG, "FacebookProfile:storeObject :" + storeObject);
 
                                 //ProfilePictureView profilePictureView;
                                 //profilePictureView;
+                                /*
                                 try {
                                     if (storeObject.has("picture")) {
                                         //Log.d(TAG, "FacebookProfile:storeObject2 :" + storeObject);
@@ -270,7 +257,7 @@ public class ActivityLogin extends AppCompatActivity {
                                     }
                                 }catch (Exception e){
                                     e.printStackTrace();
-                                }
+                                }*/
                                 //Facebookでログインした後にfirebaseに以下の情報を登録しているemail, first name last name birthday gender
                                 //増やす可能性あり
                                 mRootRef.child(FirebaseInfo.CHILD_USERS).child(user.getUid()).child(FirebaseInfo.USER_EMAIL).setValue(email);
@@ -283,7 +270,8 @@ public class ActivityLogin extends AppCompatActivity {
                             }
                         });
                 Bundle parameters = new Bundle();
-                parameters.putString("fields", "id,name,email,gender,birthday,first_name,last_name,picture.type(large)");
+                parameters.putString("fields", "id,name,email,gender,birthday,first_name,last_name");
+                //parameters.putParcelableArray("fields", );
                 request.setParameters(parameters);
                 request.executeAsync();
 
@@ -295,7 +283,7 @@ public class ActivityLogin extends AppCompatActivity {
                 //new LoadImage().execute(ResourceUrl);
 
                 //他のアクティビティへ飛ぶ
-                Intent intent = new Intent(ActivityLogin.this, ActivityUserSetting.class);
+                Intent intent = new Intent(ActivityLogin.this, ActivityProfileSetting.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);

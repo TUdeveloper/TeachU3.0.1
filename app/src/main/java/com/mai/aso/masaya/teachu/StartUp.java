@@ -3,10 +3,7 @@ package com.mai.aso.masaya.teachu;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 
 /**
@@ -29,7 +26,7 @@ public class StartUp extends Activity {
     View.OnClickListener handler = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(StartUp.this, ActivityLogin.class);
+            Intent intent = new Intent(StartUp.this, ActivityMainTab.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);

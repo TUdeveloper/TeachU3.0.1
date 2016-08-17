@@ -1,30 +1,21 @@
 package com.mai.aso.masaya.teachu;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toolbar;
 
-import com.firebase.client.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.mai.aso.masaya.teachu.info.FirebaseInfo;
-
-import org.w3c.dom.Text;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -73,7 +64,7 @@ public class FragmentPublic extends Fragment {
         textGender = (TextView)getActivity().findViewById(R.id.text_gender);
         textBirthday = (TextView)getActivity().findViewById(R.id.text_birthday);
 
-        auth = FirebaseAuth.getInstance();
+        /*auth = FirebaseAuth.getInstance();
         user = FirebaseAuth.getInstance().getCurrentUser();
         refUser = mRootRef.child(FirebaseInfo.CHILD_USERS).child(user.getUid());
         refUser.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -97,7 +88,7 @@ public class FragmentPublic extends Fragment {
             public void onCancelled(DatabaseError databaseError) {
 
             }
-        });
+        });*/
         //String Uid = user.getUid();
         //Name = mRootRef.child(FirebaseInfo.CHILD_USERS).child(user.getUid()).child(FirebaseInfo.USER_FIRST_NAME).toString();
         //Log.d(TAG, "UserID: " + Uid);
@@ -116,6 +107,19 @@ public class FragmentPublic extends Fragment {
         textName.setText("test");
     }
 
+
+    @Override
+    public void onStart(){
+        super.onStart();
+        ImageButton search_teacher_btn = (ImageButton)getView().findViewById(R.id.search_teacher_botton);
+        search_teacher_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), ActivitySearchTeacher.class);
+                startActivity(i);
+            }
+        });
+    }
 
     //refUser.CompletionLi
     //addValueEventListener(new ValueEventListener()

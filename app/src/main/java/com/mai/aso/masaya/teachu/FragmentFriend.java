@@ -37,7 +37,7 @@ public class FragmentFriend extends Fragment {
                              Bundle savedInstanceState) {
         //ActionBarTitle
         ActionBar actionBar = ((AppCompatActivity)getActivity()).getSupportActionBar();
-        actionBar.setTitle(R.string.titleFriend);
+        actionBar.setTitle(R.string.titleChat);
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_fragment_friend, container, false);
     }
