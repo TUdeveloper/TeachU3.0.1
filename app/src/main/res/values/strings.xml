@@ -46,7 +46,114 @@
         <item>Intersex</item>
     </string-array>
 
+    <!-- 3-2 My ScheduleのList -->
+    <string-array name="calendar_name_temp">
+        <item>Aso Masaya</item>
+        <item>Horibe Takamasa</item>
+        <item>Tommy Yuki</item>
+        <item>Ito Taichi</item>
+        <item>Abe Yuki</item>
+        <item>Aso Taro</item>
+        <item>Nota Shuzi</item>
+        <item>Shizu Kentaro</item>
+    </string-array>
+    <string-array name="calendar_comment_temp">
+        <item>Hello, Im glad to see you</item>
+        <item>こんにちは，よろしくおねがいします</item>
+        <item>Enterprize ship</item>
+        <item>Bosch campany employee</item>
+        <item>看護師なう</item>
+        <item>prime minister was</item>
+        <item>hello----</item>
+        <item>Wow!! wwwwwwww</item>
+    </string-array>
+    <string-array name="calendar_language_temp">
+        <item>English</item>
+        <item>Kendo</item>
+        <item>Aerospace</item>
+        <item>Automobile</item>
+        <item>health care</item>
+        <item>politics</item>
+        <item>pilot</item>
+        <item>bolling</item>
+    </string-array>
+
+    <!-- 3-5 ComingCardのList -->
+    <string-array name="student_name_temp">
+        <item>Aso Masaya</item>
+        <item>Horibe Takamasa</item>
+        <item>Tommy Yuki</item>
+        <item>Ito Taichi</item>
+        <item>Abe Yuki</item>
+        <item>Aso Taro</item>
+        <item>Nota Shuzi</item>
+        <item>Shizu Kentaro</item>
+    </string-array>
+    <string-array name="teacher_name_temp">
+        <item>Horibe Takamasa</item>
+        <item>Tommy Yuki</item>
+        <item>Ito Taichi</item>
+        <item>Abe Yuki</item>
+        <item>Aso Taro</item>
+        <item>Nota Shuzi</item>
+        <item>Shizu Kentaro</item>
+        <item>Aso Masaya</item>
+    </string-array>
+    <string-array name="money_temp">
+        <item>5000</item>
+        <item>2000</item>
+        <item>1000</item>
+        <item>0</item>
+        <item>10000</item>
+        <item>1500</item>
+        <item>100</item>
+        <item>4000</item>
+    </string-array>
+    <string-array name="Time_temp">
+        <item>TBD</item>
+        <item>2016/10/10 10:00 - 12:30</item>
+        <item>2016/08/30 14:00 - 16:30</item>
+        <item>TBD</item>
+        <item>2016/08/30 14:00 - 16:30</item>
+        <item>2016/08/30 14:00 - 16:30</item>
+        <item>2016/08/30 14:00 - 16:30</item>
+        <item>都合のいい日連絡してください</item>
+    </string-array>
+    <string-array name="location_temp">
+        <item>Bosch Cafe</item>
+        <item>スタバ</item>
+        <item>ココス</item>
+        <item>ジョナサン</item>
+        <item>TBD</item>
+        <item>コメダ</item>
+        <item>ガスト</item>
+        <item>阿蘇くんの家</item>
+    </string-array>
+    <string-array name="language_temp">
+        <item>English</item>
+        <item>Kendo</item>
+        <item>Aerospace</item>
+        <item>Automobile</item>
+        <item>health care</item>
+        <item>politics</item>
+        <item>pilot</item>
+        <item>bolling</item>
+    </string-array>
+
+    <!-- 4-3 Select_CalendarのList -->
+    <string-array name="calendar_time_temp">
+        <item>9:00-10:00</item>
+        <item>10:00-11:00</item>
+        <item>11:00-12:00</item>
+        <item>13:00-14:00</item>
+        <item>15:00-16:00</item>
+        <item>17:00-18:00</item>
+        <item>19:00-20:00</item>
+        <item>20:00-21:00</item>
+    </string-array>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="chat">chat</string>
+    <string name="title_activity_activity_map">Map</string>
 </resources>

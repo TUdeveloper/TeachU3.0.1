@@ -24,125 +24,20 @@
         android:layout_weight="1"
         android:orientation="vertical">
 
-    <CalendarView   android:id="@+id/calender"
+    <CalendarView
+        android:id="@+id/calender"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1">
+     </CalendarView>
 
-    </CalendarView>
-
-    <android.support.v7.widget.CardView
-        xmlns:card_view="http://schemas.android.com/apk/res-auto"
-        android:background="#fffafa"
-        android:id="@+id/meeting_card"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        card_view:cardCornerRadius="3dp"
-        android:elevation="15dp"
-        android:layout_centerHorizontal="true">
-
-        <RelativeLayout
+        <ListView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:id="@+id/listView_books"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_weight="2" />
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/imageView"
-                android:src="@drawable/card_background_2"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="false"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentRight="false"
-                android:layout_alignWithParentIfMissing="false"
-                android:layout_alignParentEnd="false" />
-
-            <ImageView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:id="@+id/imageView2"
-                android:src="@drawable/profile1"
-                android:layout_marginLeft="55dp"
-                android:layout_marginStart="55dp"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_marginTop="35dp" />
-
-            <ImageView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:id="@+id/imageView3"
-                android:src="@drawable/profile2"
-                android:layout_marginRight="55dp"
-                android:layout_marginEnd="55dp"
-                android:layout_alignTop="@+id/imageView2"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Mai Oobayashi"
-                android:id="@+id/textView2"
-                android:layout_below="@+id/imageView2"
-                android:layout_alignLeft="@+id/imageView2"
-                android:layout_alignStart="@+id/imageView2" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Masaya Aso"
-                android:id="@+id/textView3"
-                android:layout_below="@+id/imageView3"
-                android:layout_alignLeft="@+id/imageView3"
-                android:layout_alignStart="@+id/imageView3" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="2000 yen / hour"
-                android:id="@+id/textView16"
-                android:layout_alignParentBottom="true"
-                android:layout_toRightOf="@+id/imageView2"
-                android:layout_toEndOf="@+id/imageView2" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="2016/08/30 14:00 - 16:30"
-                android:id="@+id/textView17"
-                android:layout_above="@+id/textView16"
-                android:layout_alignLeft="@+id/textView16"
-                android:layout_alignStart="@+id/textView16" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Shibuya, Bosch Cafe"
-                android:id="@+id/textView18"
-                android:layout_above="@+id/textView17"
-                android:layout_alignLeft="@+id/textView17"
-                android:layout_alignStart="@+id/textView17" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="English"
-                android:id="@+id/textView19"
-                android:layout_above="@+id/textView18"
-                android:layout_alignLeft="@+id/textView18"
-                android:layout_alignStart="@+id/textView18" />
-
-        </RelativeLayout>
-
-    </android.support.v7.widget.CardView>
     </LinearLayout>
 </LinearLayout>
