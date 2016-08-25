@@ -84,7 +84,10 @@
             android:name=".ActivitySearchTeacher"
             android:label="activity_search_teacher"
             android:theme="@style/AppTheme.NoActionBar" />
-
+        <activity
+            android:name=".ActivityFavorite"
+            android:label="activity_favorite"
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <meta-data
             android:name="com.google.android.gms.version"

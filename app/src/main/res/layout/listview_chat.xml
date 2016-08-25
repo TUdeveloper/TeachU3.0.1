@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <ImageView
+        android:layout_width="30pt"
+        android:layout_height="30pt"
+        android:id="@+id/icon_chat"
+        android:layout_marginLeft="11dp"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="5dp"
+        android:src="@mipmap/horibe_pic"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Takamasa Horibe"
+        android:id="@+id/name_chat"
+        android:layout_marginTop="9dp"
+        android:layout_alignTop="@+id/icon_chat"
+        android:layout_toRightOf="@+id/icon_chat"
+        android:layout_toEndOf="@+id/icon_chat"
+        android:layout_marginLeft="13dp"
+        android:layout_marginStart="13dp"
+        android:textColor="#000000" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="いやー，今日めっちゃ暑くね？..."
+        android:id="@+id/comment_chat"
+        android:layout_below="@+id/name_chat"
+        android:layout_alignLeft="@+id/name_chat"
+        android:layout_alignStart="@+id/name_chat"
+        android:layout_marginLeft="0dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="9dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="9/14 13:09"
+        android:id="@+id/lasttime_chat"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="7dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginTop="14dp" />
+</RelativeLayout>

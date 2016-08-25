@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/borderline">
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:id="@+id/icon_favorite"
+            android:src="@mipmap/horibe_pic"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/name_favorite"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Horibe Takamasa"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="21dp"
+                    android:layout_marginStart="21dp"
+                    android:layout_alignBaseline="@+id/button"
+                    android:layout_alignBottom="@+id/button"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Card"
+                    android:id="@+id/button"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true" />
+            </RelativeLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:id="@+id/location_icon"
+                    android:src="@drawable/location_icon"
+                    android:layout_below="@+id/name_favorite"
+                    android:layout_alignLeft="@+id/name_favorite"
+                    android:layout_alignStart="@+id/name_favorite"
+                    android:layout_gravity="center_horizontal" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="Shibuya"
+                    android:id="@+id/location_for_icon"
+                    android:layout_alignBottom="@+id/location_icon"
+                    android:layout_toRightOf="@+id/location_icon"
+                    android:layout_toEndOf="@+id/location_icon" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:id="@+id/imageView"
+                    android:src="@drawable/star_icon"
+                    android:layout_below="@+id/name_favorite"
+                    android:layout_toRightOf="@+id/location_for_icon"
+                    android:layout_toEndOf="@+id/textView"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginStart="18dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="4.5"
+                    android:id="@+id/textView2"
+                    android:layout_alignBaseline="@+id/textView"
+                    android:layout_alignBottom="@+id/textView"
+                    android:layout_toRightOf="@+id/imageView"
+                    android:layout_toEndOf="@+id/imageView" />
+
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:id="@+id/imageView2"
+                    android:src="@drawable/education_icon"
+                    android:layout_marginStart="30dp"
+                    android:layout_below="@+id/name_favorite"
+                    android:layout_toRightOf="@+id/name_favorite"
+                    android:layout_toEndOf="@+id/name_favorite" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="30"
+                    android:id="@+id/textView3"
+                    android:layout_alignBottom="@+id/imageView2"
+                    android:layout_toRightOf="@+id/imageView2"
+                    android:layout_toEndOf="@+id/imageView2" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="  Language : "
+            android:id="@+id/languageis" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="English"
+            android:id="@+id/user_language" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="  Date : "
+            android:id="@+id/dateis" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Wed 14:00 -- 16:00 / Fri 16:00 -- 18:00"
+            android:id="@+id/user_date" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="  Location : "
+            android:id="@+id/locationis" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bosch Cafe"
+            android:id="@+id/user_location" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="  Comment : "
+            android:id="@+id/commentis" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="よろしく！！"
+            android:id="@+id/comment_favorite" />
+    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="5dp"
+        android:text=" "
+        android:id="@+id/just_space" />
+</LinearLayout>
