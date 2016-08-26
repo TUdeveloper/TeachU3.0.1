@@ -98,4 +98,35 @@
         <item>6000</item>
     </string-array>
 
+    <string-array name="publick_name_temp">
+        <item>Aso Masaya</item>
+        <item>Horibe Takamasa</item>
+        <item>Tommy Yuki</item>
+        <item>Ito Taichi</item>
+        <item>Abe Yuki</item>
+        <item>Aso Taro</item>
+        <item>Nota Shuzi</item>
+        <item>Shizu Kentaro</item>
+    </string-array>
+    <string-array name="publick_comment_temp">
+        <item>Hello, Im glad to see you</item>
+        <item>こんにちは，よろしくおねがいします</item>
+        <item>Enterprize ship</item>
+        <item>Bosch campany employee</item>
+        <item>看護師なう</item>
+        <item>prime minister was</item>
+        <item>hello----</item>
+        <item>Wow!! wwwwwwww</item>
+    </string-array>
+    <string-array name="publick_language_temp">
+        <item>English</item>
+        <item>Kendo</item>
+        <item>Aerospace</item>
+        <item>Automobile</item>
+        <item>health care</item>
+        <item>politics</item>
+        <item>pilot</item>
+        <item>bolling</item>
+    </string-array>
+
 </resources>
