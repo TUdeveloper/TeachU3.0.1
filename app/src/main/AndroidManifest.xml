@@ -121,6 +121,10 @@
             android:name=".ActivityUndecided"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".ActivitySelectCalendar"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar"/>
 
         <!--
  ATTENTION: This was auto-generated to add Google Play services to your project for

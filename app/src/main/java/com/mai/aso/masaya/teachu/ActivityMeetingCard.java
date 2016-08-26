@@ -30,7 +30,7 @@ public class ActivityMeetingCard extends AppCompatActivity {
     private static final String TAG = ActivityMeetingCard.class.getSimpleName();
     final CharSequence[] ItemLanguage = { "English", "Japanese", "Chinese"};
     private String selectedLanguage;
-    private ImageView btn_language, btn_location;
+    private ImageView btn_language, btn_location, btn_calendar;
     private TextView txt_language;
     //private MenuItem menuItemSend;
 
@@ -56,6 +56,7 @@ public class ActivityMeetingCard extends AppCompatActivity {
 
         btn_language = (ImageView)findViewById(R.id.language_select);
         btn_location = (ImageView)findViewById(R.id.location_select);
+        btn_calendar = (ImageView)findViewById(R.id.calendar_select);
         txt_language = (TextView)findViewById(R.id.txt_language);
 
         btn_language.setOnClickListener(new View.OnClickListener() {
@@ -91,8 +92,17 @@ public class ActivityMeetingCard extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //ポップアップの表示メソッド
-                Intent intent = new Intent(ActivityMeetingCard.this, ActivityMap.class);
-                startActivity(intent);
+                Intent intent_location = new Intent(ActivityMeetingCard.this, ActivityMap.class);
+                startActivity(intent_location);
+            }
+        });
+
+        btn_calendar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //ポップアップの表示メソッド
+                Intent intent_calendar = new Intent(ActivityMeetingCard.this, ActivitySelectCalendar.class);
+                startActivity(intent_calendar);
             }
         });
     }
