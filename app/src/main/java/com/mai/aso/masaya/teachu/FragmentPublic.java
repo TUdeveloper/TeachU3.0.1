@@ -74,6 +74,7 @@ public class FragmentPublic extends Fragment {
         //ActionBarTitle
         ActionBar actionBar = ((AppCompatActivity)getActivity()).getSupportActionBar();
         actionBar.setTitle(R.string.titlePublic);
+        actionBar.show();
 
         View view = inflater.inflate(R.layout.fragment_public, container, false);
 

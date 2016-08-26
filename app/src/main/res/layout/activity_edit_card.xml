@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.mai.aso.masaya.teachu.SubMake">
+    tools:context="com.mai.aso.masaya.teachu.ActivityEditCard">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

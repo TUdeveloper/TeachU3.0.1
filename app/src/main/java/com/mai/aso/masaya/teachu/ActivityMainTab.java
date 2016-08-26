@@ -1,5 +1,7 @@
 package com.mai.aso.masaya.teachu;
 
+import android.app.SearchManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -7,10 +9,12 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +43,7 @@ public class ActivityMainTab extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        //getSupportActionBar().setHomeButtonEnabled(true);
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         // Set up the ViewPager with the sections adapter.
         viewPager = (ViewPager) findViewById(R.id.container);
@@ -49,6 +54,12 @@ public class ActivityMainTab extends AppCompatActivity {
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
         setupTabIcons();
+
+        Intent searchIntent = getIntent();
+        if(Intent.ACTION_SEARCH.equals(searchIntent.getAction())){
+            String query = searchIntent.getStringExtra(SearchManager.QUERY);
+            Toast.makeText(ActivityMainTab.this, query, Toast.LENGTH_SHORT).show();
+        }
 
         /*
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -65,7 +76,6 @@ public class ActivityMainTab extends AppCompatActivity {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFrag(new FragmentPublic(),"One");
         adapter.addFrag(new FragmentChat(), "Two");
-        //adapter.addFrag(new FragmentEducation(), "Three");
         adapter.addFrag(new FragmentHome(), "Three");
         viewPager.setAdapter(adapter);
     }
@@ -74,16 +84,20 @@ public class ActivityMainTab extends AppCompatActivity {
         tabLayout.getTabAt(0).setIcon(tabIcon[0]);
         tabLayout.getTabAt(1).setIcon(tabIcon[1]);
         tabLayout.getTabAt(2).setIcon(tabIcon[2]);
-        //tabLayout.getTabAt(3).setIcon(tabIcon[3]);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main_tab, menu);
+
+        SearchView searchView = (SearchView) menu.findItem(R.id.search_id).getActionView();
+        SearchManager searchManager = (SearchManager) getSystemService(SEARCH_SERVICE);
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
         return true;
     }
 
+    //阿蘓：ツールバーの一番右上にある三つの点が立てに並んでいる部分（隠れている部分）現在は必要ない
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -92,9 +106,9 @@ public class ActivityMainTab extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+        //if (id == R.id.action_settings) {
+        //    return true;
+        //}
         return super.onOptionsItemSelected(item);
     }
 
@@ -138,8 +152,6 @@ public class ActivityMainTab extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             return null; //mFragmentTitleList.get(position);
         }
-
-
     }
 
 }

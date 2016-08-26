@@ -1,5 +1,16 @@
 <resources>
+    <!--ツールバー上に表示するアクティビティの名前-->
     <string name="app_name">TeachU</string>
+    <string name="name_activity_meeting_card">Meeting Card</string>
+    <string name="name_activity_profile_setting">Profile</string>
+    <string name="name_activity_calendar">My Schedule</string>
+    <string name="name_activity_setting">Setting</string>
+    <string name="name_activity_history">History</string>
+    <string name="name_activity_undecided">Undecided Card</string>
+    <string name="name_activity_favorite">Favorite</string>
+    <string name="name_activity_education">Education</string>
+
+
     <string name="facebook_app_id">1799437900289195</string>
     <string name="action_settings">Settings</string>
     <string name="action_search">Search</string>

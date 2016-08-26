@@ -17,7 +17,8 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:id="@+id/frag_home_profile_layout">
 
             <ImageView
                 android:layout_width="match_parent"
@@ -39,7 +40,8 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:id="@+id/frag_home_history_layout">
 
             <ImageView
                 android:layout_width="match_parent"
@@ -61,7 +63,8 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:id="@+id/frag_home_book_layout">
 
             <ImageView
                 android:layout_width="match_parent"
@@ -96,7 +99,8 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:id="@+id/frag_home_schedule_layout">
 
             <ImageView
                 android:layout_width="match_parent"
@@ -119,7 +123,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:id="@+id/coming_card">
+            android:id="@+id/frag_home_card_layout"
+            android:contextClickable="false">
 
             <ImageView
                 android:layout_width="match_parent"
@@ -141,15 +146,16 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1">
-
-        </LinearLayout>
+            android:layout_weight="1"
+            android:id="@+id/for_meeting_card"></LinearLayout>
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"></LinearLayout>
+            android:layout_weight="1">
+
+        </LinearLayout>
 
     </LinearLayout>
 
@@ -163,7 +169,8 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:id="@+id/frag_home_setting_layout">
 
             <ImageView
                 android:layout_width="match_parent"
@@ -185,14 +192,15 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:id="@+id/frag_home_favorite_layout">
 
-            <ImageButton
+            <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/homeFavoriteButton_id"
-                android:src="@drawable/ic_friend_1"
-                android:layout_weight="1" />
+                android:id="@+id/imageView11"
+                android:layout_weight="1"
+                android:src="@drawable/ic_friend_1" />
 
             <TextView
                 android:layout_width="match_parent"

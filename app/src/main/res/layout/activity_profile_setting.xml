@@ -18,7 +18,7 @@
             android:scaleType="centerCrop"
             android:src="@drawable/ic_manchester" />
 
-        <ImageButton
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profile_image"
             android:layout_width="120dp"
             android:layout_height="120dp"
@@ -27,60 +27,118 @@
             android:layout_marginTop="-60dp"
             android:background="@drawable/profile_circular_border_imageview"
             android:elevation="5dp"
-            android:padding="20dp"
+            android:padding="3dp"
             android:scaleType="centerCrop"
             android:src="@drawable/profile1" />
 
-        <RelativeLayout
+        <LinearLayout
             android:id="@+id/profile_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/header_cover_image"
             android:background="@color/colorPrimaryDark"
             android:elevation="4dp"
-            android:paddingBottom="24dp">
+            android:orientation="vertical">
 
 
-            <ImageView
-                android:id="@+id/add_friend"
-                android:layout_width="30dp"
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
                 android:layout_height="30dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_toLeftOf="@+id/drop_down_option_menu"
-                android:src="@drawable/ic_calendar_black" />
+                android:layout_weight="1"></LinearLayout>
 
-            <ImageView
-                android:id="@+id/drop_down_option_menu"
-                android:layout_width="30dp"
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
                 android:layout_height="30dp"
-                android:layout_alignParentRight="true"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
-                android:src="@drawable/ic_setting_white" />
+                android:layout_weight="1"></LinearLayout>
 
-            <TextView
-                android:id="@+id/user_profile_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="76dp"
-                android:text="Masaya Aso"
-                android:textColor="#fff"
-                android:textSize="24sp"
-                android:textStyle="bold" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
 
-            <TextView
-                android:id="@+id/user_profile_short_bio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/user_profile_name"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="12dp"
-                android:text="Hello, very nice to meet you!"
-                android:textColor="#fff"
-                android:textSize="14sp" />
-        </RelativeLayout>
+                <TextView
+                    android:id="@+id/user_profile_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="Masaya Aso"
+                    android:textColor="#fff"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:gravity="center_horizontal" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/add_friend"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@android:drawable/ic_menu_mylocation"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
+
+                <TextView
+                    android:id="@+id/user_profile_short_bio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Shibuya"
+                    android:textColor="#fff"
+                    android:textSize="14sp"
+                    android:layout_below="@+id/user_profile_name"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center_vertical" />
+
+                <ImageView
+                    android:id="@+id/drop_down_option_menu"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/abc_ic_star_black_36dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_toLeftOf="@+id/user_profile_short_bio"
+                    android:layout_toStartOf="@+id/user_profile_short_bio" />
+
+                <TextView
+                    android:id="@+id/textView20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="4.2"
+                    android:textColor="#fff"
+                    android:textSize="14sp"
+                    android:layout_below="@+id/user_profile_name"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center_vertical" />
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_school_white"
+                    android:layout_alignParentBottom="true"
+                    android:layout_toLeftOf="@+id/user_profile_short_bio"
+                    android:layout_toStartOf="@+id/user_profile_short_bio" />
+
+                <TextView
+                    android:id="@+id/textView21"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="132"
+                    android:textColor="#fff"
+                    android:textSize="14sp"
+                    android:layout_below="@+id/user_profile_name"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center_vertical" />
+            </LinearLayout>
+
+        </LinearLayout>
 
 
         <LinearLayout
@@ -90,59 +148,934 @@
             android:layout_marginTop="5dp"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:background="#fff"
-                android:clickable="true"
-                android:elevation="4dp"
-                android:padding="20dp"
-                android:text="Personal Info" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="0dp"
+                        android:clickable="true"
+                        android:elevation="4dp"
+                        android:text="General"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="10dp"
+                        android:background="#f0f8ff"
+                        android:paddingBottom="5dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#fff"
+                        android:clickable="true"
+                        android:elevation="4dp"
+                        android:text="Mother Tongue"
+                        android:id="@+id/textView22"
+                        android:layout_weight="1"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="10dp" />
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#fff"
+                        android:clickable="true"
+                        android:elevation="4dp"
+                        android:text="Japanese"
+                        android:id="@+id/textView23"
+                        android:layout_weight="0.75"
+                        android:paddingTop="10dp"
+                        android:paddingLeft="10dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#fff"
+                        android:clickable="true"
+                        android:elevation="4dp"
+                        android:text="Gender"
+                        android:id="@+id/textView24"
+                        android:layout_weight="1"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="5dp" />
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#fff"
+                        android:clickable="true"
+                        android:elevation="4dp"
+                        android:text="Male"
+                        android:id="@+id/textView25"
+                        android:layout_weight="0.75"
+                        android:paddingTop="5dp"
+                        android:paddingLeft="10dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#fff"
+                        android:clickable="true"
+                        android:elevation="4dp"
+                        android:text="Birthday"
+                        android:id="@+id/textView26"
+                        android:layout_weight="1"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="5dp" />
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#fff"
+                        android:clickable="true"
+                        android:elevation="4dp"
+                        android:text="1990/11/19"
+                        android:id="@+id/textView27"
+                        android:layout_weight="0.75"
+                        android:paddingTop="5dp"
+                        android:paddingLeft="10dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#fff"
+                        android:clickable="true"
+                        android:elevation="4dp"
+                        android:text="School"
+                        android:id="@+id/textView28"
+                        android:layout_weight="1"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="5dp" />
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#fff"
+                        android:clickable="true"
+                        android:elevation="4dp"
+                        android:text="The University of Manchester"
+                        android:id="@+id/textView29"
+                        android:layout_weight="0.75"
+                        android:paddingTop="5dp"
+                        android:paddingLeft="10dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#fff"
+                        android:clickable="true"
+                        android:elevation="4dp"
+                        android:text="Job"
+                        android:id="@+id/textView30"
+                        android:layout_weight="1"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="5dp" />
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#fff"
+                        android:clickable="true"
+                        android:elevation="4dp"
+                        android:text="Engineer"
+                        android:id="@+id/textView31"
+                        android:layout_weight="0.75"
+                        android:paddingTop="5dp"
+                        android:paddingLeft="10dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#fff"
+                        android:clickable="true"
+                        android:elevation="4dp"
+                        android:text="Register as"
+                        android:id="@+id/textView32"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="5dp"
+                        android:layout_weight="1" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:text="Student"
+                        android:id="@+id/checkBox"
+                        android:checked="false"
+                        android:layout_weight="1"
+                        android:background="#fff"
+                        android:elevation="4dp"
+                        android:layout_marginBottom="5dp" />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:text="Teacher"
+                        android:id="@+id/checkBox2"
+                        android:checked="false"
+                        android:layout_weight="1"
+                        android:background="#fff"
+                        android:elevation="4dp"
+                        android:layout_gravity="left"
+                        android:layout_marginBottom="5dp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="0dp"
+                        android:background="#f0f8ff"
+                        android:clickable="true"
+                        android:elevation="4dp"
+                        android:text="As Student"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="5dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#fff"
+                        android:clickable="true"
+                        android:elevation="4dp"
+                        android:text="Interested in"
+                        android:id="@+id/textView33"
+                        android:layout_weight="1"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="10dp" />
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#fff"
+                        android:clickable="true"
+                        android:elevation="4dp"
+                        android:text="English"
+                        android:id="@+id/textView34"
+                        android:layout_weight="0.75"
+                        android:paddingTop="10dp"
+                        android:paddingLeft="10dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#fff"
+                        android:clickable="true"
+                        android:elevation="4dp"
+                        android:text="Where"
+                        android:id="@+id/textView35"
+                        android:layout_weight="1"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="5dp" />
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#fff"
+                        android:clickable="true"
+                        android:elevation="4dp"
+                        android:text="Shibuya,Shunjuku"
+                        android:id="@+id/textView36"
+                        android:layout_weight="0.75"
+                        android:paddingTop="5dp"
+                        android:paddingLeft="10dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#fff"
+                        android:clickable="true"
+                        android:text="Free time"
+                        android:id="@+id/textView43"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="5dp"
+                        android:layout_weight="1"
+                        android:paddingBottom="5dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:id="@+id/checkBox3"
+                        android:checked="false"
+                        android:background="#fff"
+                        android:layout_marginBottom="5dp" />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/checkBox4"
+                        android:checked="false"
+                        android:background="#fff"
+                        android:layout_gravity="left"
+                        android:layout_marginBottom="5dp" />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:id="@+id/checkBox5"
+                        android:checked="false"
+                        android:background="#fff"
+                        android:layout_marginBottom="5dp" />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/checkBox6"
+                        android:checked="false"
+                        android:background="#fff"
+                        android:layout_gravity="left"
+                        android:layout_marginBottom="5dp" />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/checkBox7"
+                        android:checked="false"
+                        android:background="#fff"
+                        android:layout_gravity="left"
+                        android:layout_marginBottom="5dp" />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:id="@+id/checkBox8"
+                        android:checked="false"
+                        android:background="#fff"
+                        android:layout_marginBottom="5dp" />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/checkBox9"
+                        android:checked="false"
+                        android:background="#fff"
+                        android:layout_gravity="left"
+                        android:layout_marginBottom="5dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#fff"
+                        android:clickable="true"
+                        android:text="Morning"
+                        android:id="@+id/textView37"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="5dp"
+                        android:layout_marginBottom="5dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:id="@+id/checkBox10"
+                        android:checked="false"
+                        android:background="#fff"
+                        android:layout_marginBottom="5dp" />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/checkBox11"
+                        android:checked="false"
+                        android:background="#fff"
+                        android:layout_gravity="left"
+                        android:layout_marginBottom="5dp" />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:id="@+id/checkBox12"
+                        android:checked="false"
+                        android:background="#fff"
+                        android:layout_marginBottom="5dp" />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/checkBox13"
+                        android:checked="false"
+                        android:background="#fff"
+                        android:layout_gravity="left"
+                        android:layout_marginBottom="5dp" />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/checkBox14"
+                        android:checked="false"
+                        android:background="#fff"
+                        android:layout_gravity="left"
+                        android:layout_marginBottom="5dp" />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:id="@+id/checkBox15"
+                        android:checked="false"
+                        android:background="#fff"
+                        android:layout_marginBottom="5dp" />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/checkBox16"
+                        android:checked="false"
+                        android:background="#fff"
+                        android:layout_gravity="left"
+                        android:layout_marginBottom="5dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#fff"
+                        android:clickable="true"
+                        android:text="Afternoon"
+                        android:id="@+id/textView38"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="5dp"
+                        android:layout_marginBottom="5dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:id="@+id/checkBox17"
+                        android:checked="false"
+                        android:background="#fff"
+                        android:elevation="4dp"
+                        android:layout_marginBottom="5dp" />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/checkBox18"
+                        android:checked="false"
+                        android:background="#fff"
+                        android:elevation="4dp"
+                        android:layout_gravity="left"
+                        android:layout_marginBottom="5dp" />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:id="@+id/checkBox19"
+                        android:checked="false"
+                        android:background="#fff"
+                        android:elevation="4dp"
+                        android:layout_marginBottom="5dp" />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/checkBox20"
+                        android:checked="false"
+                        android:background="#fff"
+                        android:elevation="4dp"
+                        android:layout_gravity="left"
+                        android:layout_marginBottom="5dp" />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/checkBox21"
+                        android:checked="false"
+                        android:background="#fff"
+                        android:elevation="4dp"
+                        android:layout_gravity="left"
+                        android:layout_marginBottom="5dp" />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:id="@+id/checkBox22"
+                        android:checked="false"
+                        android:background="#fff"
+                        android:elevation="4dp"
+                        android:layout_marginBottom="5dp" />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/checkBox23"
+                        android:checked="false"
+                        android:background="#fff"
+                        android:elevation="4dp"
+                        android:layout_gravity="left"
+                        android:layout_marginBottom="5dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#fff"
+                        android:clickable="true"
+                        android:elevation="4dp"
+                        android:text="Evening"
+                        android:id="@+id/textView39"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="5dp"
+                        android:layout_marginBottom="5dp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="0dp"
+                        android:background="#f0f8ff"
+                        android:clickable="true"
+                        android:elevation="4dp"
+                        android:text="As Teacher"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="5dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#fff"
+                        android:clickable="true"
+                        android:elevation="4dp"
+                        android:text="You teach"
+                        android:id="@+id/textView40"
+                        android:layout_weight="1"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="10dp" />
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#fff"
+                        android:clickable="true"
+                        android:elevation="4dp"
+                        android:text="English, Japanese"
+                        android:id="@+id/textView41"
+                        android:layout_weight="0.75"
+                        android:paddingTop="10dp"
+                        android:paddingLeft="10dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#fff"
+                        android:clickable="true"
+                        android:elevation="4dp"
+                        android:text="Where to teach"
+                        android:id="@+id/textView42"
+                        android:layout_weight="1"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="5dp" />
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#fff"
+                        android:clickable="true"
+                        android:elevation="4dp"
+                        android:text="Shibuya,Shunjuku"
+                        android:id="@+id/textView44"
+                        android:layout_weight="0.75"
+                        android:paddingTop="5dp"
+                        android:paddingLeft="10dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#fff"
+                        android:clickable="true"
+                        android:text="Free time"
+                        android:id="@+id/textView49"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="5dp"
+                        android:layout_weight="1"
+                        android:paddingBottom="5dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:id="@+id/checkBox24"
+                        android:checked="false"
+                        android:background="#fff"
+                        android:layout_marginBottom="5dp" />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/checkBox25"
+                        android:checked="false"
+                        android:background="#fff"
+                        android:layout_gravity="left"
+                        android:layout_marginBottom="5dp" />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:id="@+id/checkBox26"
+                        android:checked="false"
+                        android:background="#fff"
+                        android:layout_marginBottom="5dp" />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/checkBox27"
+                        android:checked="false"
+                        android:background="#fff"
+                        android:layout_gravity="left"
+                        android:layout_marginBottom="5dp" />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/checkBox28"
+                        android:checked="false"
+                        android:background="#fff"
+                        android:layout_gravity="left"
+                        android:layout_marginBottom="5dp" />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:id="@+id/checkBox29"
+                        android:checked="false"
+                        android:background="#fff"
+                        android:layout_marginBottom="5dp" />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/checkBox30"
+                        android:checked="false"
+                        android:background="#fff"
+                        android:layout_gravity="left"
+                        android:layout_marginBottom="5dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#fff"
+                        android:clickable="true"
+                        android:text="Morning"
+                        android:id="@+id/textView46"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="5dp"
+                        android:layout_marginBottom="5dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:id="@+id/checkBox31"
+                        android:checked="false"
+                        android:background="#fff"
+                        android:layout_marginBottom="5dp" />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/checkBox32"
+                        android:checked="false"
+                        android:background="#fff"
+                        android:layout_gravity="left"
+                        android:layout_marginBottom="5dp" />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:id="@+id/checkBox33"
+                        android:checked="false"
+                        android:background="#fff"
+                        android:layout_marginBottom="5dp" />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/checkBox34"
+                        android:checked="false"
+                        android:background="#fff"
+                        android:layout_gravity="left"
+                        android:layout_marginBottom="5dp" />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/checkBox35"
+                        android:checked="false"
+                        android:background="#fff"
+                        android:layout_gravity="left"
+                        android:layout_marginBottom="5dp" />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:id="@+id/checkBox36"
+                        android:checked="false"
+                        android:background="#fff"
+                        android:layout_marginBottom="5dp" />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/checkBox37"
+                        android:checked="false"
+                        android:background="#fff"
+                        android:layout_gravity="left"
+                        android:layout_marginBottom="5dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#fff"
+                        android:clickable="true"
+                        android:text="Afternoon"
+                        android:id="@+id/textView47"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="5dp"
+                        android:layout_marginBottom="5dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:id="@+id/checkBox38"
+                        android:checked="false"
+                        android:background="#fff"
+                        android:elevation="4dp" />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/checkBox39"
+                        android:checked="false"
+                        android:background="#fff"
+                        android:elevation="4dp"
+                        android:layout_gravity="left" />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:id="@+id/checkBox40"
+                        android:checked="false"
+                        android:background="#fff"
+                        android:elevation="4dp" />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/checkBox41"
+                        android:checked="false"
+                        android:background="#fff"
+                        android:elevation="4dp"
+                        android:layout_gravity="left" />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/checkBox42"
+                        android:checked="false"
+                        android:background="#fff"
+                        android:elevation="4dp"
+                        android:layout_gravity="left" />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:id="@+id/checkBox43"
+                        android:checked="false"
+                        android:background="#fff"
+                        android:elevation="4dp" />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/checkBox44"
+                        android:checked="false"
+                        android:background="#fff"
+                        android:elevation="4dp"
+                        android:layout_gravity="left" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#fff"
+                        android:clickable="true"
+                        android:elevation="4dp"
+                        android:text="Evening"
+                        android:id="@+id/textView48"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="5dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#fff"
+                        android:clickable="true"
+                        android:text="Comment"
+                        android:id="@+id/textView45"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="5dp"
+                        android:layout_weight="1"
+                        android:paddingBottom="5dp" />
+
+                </LinearLayout>
+            </LinearLayout>
 
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_marginBottom="3dp"
-                android:layout_marginTop="3dp"
                 android:background="#fff"
                 android:clickable="true"
                 android:elevation="4dp"
                 android:padding="20dp"
-                android:text="Language" />
+                android:text="comment here"
+                android:layout_marginBottom="5dp" />
 
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:background="#fff"
-                android:clickable="true"
-                android:elevation="4dp"
-                android:padding="20dp"
-                android:text="Weekly Schedule" />
-
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_marginBottom="3dp"
-                android:layout_marginTop="3dp"
-                android:background="#fff"
-                android:clickable="true"
-                android:elevation="4dp"
-                android:padding="20dp"
-                android:text="Comment" />
-
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:background="#fff"
-                android:clickable="true"
-                android:elevation="4dp"
-                android:padding="20dp"
-                android:text="Setting" />
         </LinearLayout>
 
         <android.support.design.widget.FloatingActionButton

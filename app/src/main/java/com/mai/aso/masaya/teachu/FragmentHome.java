@@ -20,7 +20,7 @@ public class FragmentHome extends Fragment implements View.OnClickListener {
      * fragment.
      */
     private View mView;
-    private LinearLayout coming_card;
+    private LinearLayout coming_card, history, profile, schedule, setting, favorite, book, for_meeting_card;
     private static final String ARG_SECTION_NUMBER = "section_number";
 
     public FragmentHome() {
@@ -42,6 +42,7 @@ public class FragmentHome extends Fragment implements View.OnClickListener {
         //ActionBarTitle
         ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
         actionBar.setTitle(R.string.titleHome);
+        actionBar.show();
         //this.getActivity().setTitle("Profile");
         // Inflate the layout for this fragment
         mView = inflater.inflate(R.layout.fragment_home, container, false);
@@ -50,17 +51,60 @@ public class FragmentHome extends Fragment implements View.OnClickListener {
     }
 
     public void getUiInitialization() {
-        coming_card = (LinearLayout)mView.findViewById(R.id.coming_card);
+        coming_card = (LinearLayout)mView.findViewById(R.id.frag_home_card_layout);
+        profile = (LinearLayout)mView.findViewById(R.id.frag_home_profile_layout);
+        history = (LinearLayout)mView.findViewById(R.id.frag_home_history_layout);
+        schedule = (LinearLayout)mView.findViewById(R.id.frag_home_schedule_layout);
+        setting = (LinearLayout)mView.findViewById(R.id.frag_home_setting_layout);
+        favorite = (LinearLayout)mView.findViewById(R.id.frag_home_favorite_layout);
+        book = (LinearLayout)mView.findViewById(R.id.frag_home_book_layout);
+        for_meeting_card = (LinearLayout)mView.findViewById(R.id.for_meeting_card);
+
         coming_card.setOnClickListener(this);
+        history.setOnClickListener(this);
+        profile.setOnClickListener(this);
+        schedule.setOnClickListener(this);
+        setting.setOnClickListener(this);
+        favorite.setOnClickListener(this);
+        book.setOnClickListener(this);
+        for_meeting_card.setOnClickListener(this);
 
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.coming_card:
-                Intent intent = new Intent(getActivity(), SubMake.class);
-                startActivity(intent);
+            case R.id.frag_home_card_layout:
+                Intent intent_card = new Intent(getActivity(), ActivityUndecided.class);
+                startActivity(intent_card);
+                break;
+            case R.id.frag_home_history_layout:
+                Intent intent_history = new Intent(getActivity(), ActivityHistory.class);
+                startActivity(intent_history);
+                break;
+            case R.id.frag_home_profile_layout:
+                Intent intent_profile = new Intent(getActivity(), ActivityProfileSetting.class);
+                startActivity(intent_profile);
+                break;
+            case R.id.frag_home_schedule_layout:
+                Intent intent_schedule = new Intent(getActivity(), ActivityCalendar.class);
+                startActivity(intent_schedule);
+                break;
+            case R.id.frag_home_setting_layout:
+                //Intent intent_setting = new Intent(getActivity(), ActivityProfileSetting.class);
+                //startActivity(intent_setting);
+                break;
+            case R.id.frag_home_favorite_layout:
+                Intent intent_favorite = new Intent(getActivity(), ActivityFavorite.class);
+                startActivity(intent_favorite);
+                break;
+            case R.id.frag_home_book_layout:
+                Intent intent_book = new Intent(getActivity(), ActivityBooks.class);
+                startActivity(intent_book);
+                break;
+            case R.id.for_meeting_card:
+                Intent intent_meeting_card = new Intent(getActivity(), ActivityMeetingCard.class);
+                startActivity(intent_meeting_card);
                 break;
             default:
                 break;
@@ -70,13 +114,6 @@ public class FragmentHome extends Fragment implements View.OnClickListener {
     @Override
     public void onStart(){
         super.onStart();
-        ImageButton home_favorite_btn = (ImageButton)getView().findViewById(R.id.homeFavoriteButton_id);
-        home_favorite_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getActivity(), ActivityFavorite.class);
-                startActivity(i);
-            }
-        });
+
     }
 }
