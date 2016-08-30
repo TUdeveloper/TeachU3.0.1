@@ -54,7 +54,7 @@ public class ActivityCalendar extends AppCompatActivity {
         final ListView listview = (ListView)findViewById(R.id.listView_books);
         ColorDrawable sage = new ColorDrawable(Color.argb(000, 255, 255, 255));
         listview.setDivider(sage);
-        listview.setDividerHeight(50);
+        listview.setDividerHeight(5);
 
         // まずはデータの準備：ArrayList(大きさが可変の配列)をUserクラスを使って定義（Userのインスタンスが配列になってるイメージ）
         // !!!!!!!!!!!!!   iconをすべてmipmapで定義してるので，drawableに変える．結局はFireBaseからダウンロードしてくるんだけど．  !!!!!!!!!!!!!!!!!!
@@ -63,7 +63,6 @@ public class ActivityCalendar extends AppCompatActivity {
                 R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher};
         final String[] names = getResources().getStringArray(R.array.calendar_name_temp);
         final String[] languages = getResources().getStringArray(R.array.calendar_language_temp);
-        final String[] comments = getResources().getStringArray(R.array.calendar_comment_temp);
 
         //for (int i=0; i<icons.length; i++) { //forでUserクラスのuserインスタンスを作って，ArayListのusersに追加
         for (int i=0; i<per_page; i++) { //forでUserクラスのuserインスタンスを作って，ArrayListのusersに追加
@@ -75,7 +74,6 @@ public class ActivityCalendar extends AppCompatActivity {
             ));
             user.setName(names[j]);
             user.setLanguage(languages[j]);
-            user.setComment(comments[j]);
             users.add(user);
         }
 
@@ -126,7 +124,6 @@ public class ActivityCalendar extends AppCompatActivity {
                                         ));
                                         user.setName(names[j]);
                                         user.setLanguage(languages[j]);
-                                        user.setComment(comments[j]);
                                         //users.add(user);
                                         adapter.add(user);
                                     }
@@ -156,14 +153,11 @@ public class ActivityCalendar extends AppCompatActivity {
         private Bitmap icon;
         private String name;
         private String language;
-        private String comment;
 
         public String getName(){ return name;}
         public void setName(String name){this.name = name; }
         public String getLanguage(){return language;}
         public void setLanguage(String language){this.language = language;}
-        public String getComment(){ return comment;}
-        public void setComment(String comment){this.comment = comment; }
         public Bitmap getIcon(){ return icon; }
         public void setIcon(Bitmap icon){ this.icon = icon;}
     }
@@ -191,7 +185,6 @@ public class ActivityCalendar extends AppCompatActivity {
             ((ImageView) convertView.findViewById(R.id.user_icon)).setImageBitmap(user.getIcon());
             ((TextView) convertView.findViewById(R.id.user_name)).setText(user.getName());
             ((TextView) convertView.findViewById(R.id.user_language)).setText(user.getLanguage());
-            ((TextView) convertView.findViewById(R.id.user_comment)).setText(user.getComment());
 
             return convertView;
         }
