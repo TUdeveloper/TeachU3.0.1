@@ -1,0 +1,591 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ActivityProfile">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/header_cover_image"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_manchester" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_below="@+id/header_cover_image"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="-60dp"
+            android:background="@drawable/profile_circular_border_imageview"
+            android:elevation="5dp"
+            android:padding="3dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/profile1" />
+
+        <LinearLayout
+            android:id="@+id/profile_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/header_cover_image"
+            android:background="@color/colorPrimaryDark"
+            android:elevation="4dp"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="1"></LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_weight="1"></LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/user_profile_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="Masaya Aso"
+                    android:textColor="#fff"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:gravity="center_horizontal" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/add_friend"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@android:drawable/ic_menu_mylocation"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
+
+                <TextView
+                    android:id="@+id/user_profile_short_bio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Shibuya"
+                    android:textColor="#fff"
+                    android:textSize="14sp"
+                    android:layout_below="@+id/user_profile_name"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center_vertical" />
+
+                <ImageView
+                    android:id="@+id/drop_down_option_menu"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/abc_ic_star_black_36dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_toLeftOf="@+id/user_profile_short_bio"
+                    android:layout_toStartOf="@+id/user_profile_short_bio" />
+
+                <TextView
+                    android:id="@+id/textView20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="4.2"
+                    android:textColor="#fff"
+                    android:textSize="14sp"
+                    android:layout_below="@+id/user_profile_name"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center_vertical" />
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_school_white"
+                    android:layout_alignParentBottom="true"
+                    android:layout_toLeftOf="@+id/user_profile_short_bio"
+                    android:layout_toStartOf="@+id/user_profile_short_bio" />
+
+                <TextView
+                    android:id="@+id/textView21"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="132"
+                    android:textColor="#fff"
+                    android:textSize="14sp"
+                    android:layout_below="@+id/user_profile_name"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center_vertical" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/profile_layout"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="0dp"
+                        android:clickable="true"
+                        android:elevation="4dp"
+                        android:text="General"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="10dp"
+                        android:background="#e5e5e5"
+                        android:paddingBottom="5dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#fff"
+                        android:clickable="true"
+                        android:elevation="4dp"
+                        android:text="Mother Tongue"
+                        android:id="@+id/textView22"
+                        android:layout_weight="1"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="10dp" />
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#fff"
+                        android:clickable="true"
+                        android:elevation="4dp"
+                        android:text="Japanese"
+                        android:id="@+id/textView23"
+                        android:layout_weight="0.75"
+                        android:paddingTop="10dp"
+                        android:paddingLeft="10dp"
+                        android:textColor="@color/colorAccent" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#fff"
+                        android:clickable="true"
+                        android:elevation="4dp"
+                        android:text="Gender"
+                        android:id="@+id/textView24"
+                        android:layout_weight="1"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="5dp" />
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#fff"
+                        android:clickable="true"
+                        android:elevation="4dp"
+                        android:text="Male"
+                        android:id="@+id/textView25"
+                        android:layout_weight="0.75"
+                        android:paddingTop="5dp"
+                        android:paddingLeft="10dp"
+                        android:textColor="@color/colorAccent" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#fff"
+                        android:clickable="true"
+                        android:elevation="4dp"
+                        android:text="Birthday"
+                        android:id="@+id/textView26"
+                        android:layout_weight="1"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="5dp" />
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#fff"
+                        android:clickable="true"
+                        android:elevation="4dp"
+                        android:text="1990/11/19"
+                        android:id="@+id/textView27"
+                        android:layout_weight="0.75"
+                        android:paddingTop="5dp"
+                        android:paddingLeft="10dp"
+                        android:textColor="@color/colorAccent" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#fff"
+                        android:clickable="true"
+                        android:elevation="4dp"
+                        android:text="School"
+                        android:id="@+id/textView28"
+                        android:layout_weight="1"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="5dp" />
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#fff"
+                        android:clickable="true"
+                        android:elevation="4dp"
+                        android:text="The University of Manchester"
+                        android:id="@+id/textView29"
+                        android:layout_weight="0.75"
+                        android:paddingTop="5dp"
+                        android:paddingLeft="10dp"
+                        android:textColor="@color/colorAccent" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#fff"
+                        android:clickable="true"
+                        android:elevation="4dp"
+                        android:text="Job"
+                        android:id="@+id/textView30"
+                        android:layout_weight="1"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="5dp"
+                        android:layout_marginBottom="5dp" />
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#fff"
+                        android:clickable="true"
+                        android:elevation="4dp"
+                        android:text="Engineer"
+                        android:id="@+id/textView31"
+                        android:layout_weight="0.75"
+                        android:paddingTop="5dp"
+                        android:paddingLeft="10dp"
+                        android:layout_marginBottom="5dp"
+                        android:textColor="@color/colorAccent" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="0dp"
+                        android:background="#e5e5e5"
+                        android:clickable="true"
+                        android:elevation="4dp"
+                        android:text="As Student"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="5dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#fff"
+                        android:clickable="true"
+                        android:elevation="4dp"
+                        android:text="Interested in"
+                        android:id="@+id/textView33"
+                        android:layout_weight="1"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="10dp" />
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#fff"
+                        android:clickable="true"
+                        android:elevation="4dp"
+                        android:text="English"
+                        android:id="@+id/textView34"
+                        android:layout_weight="0.75"
+                        android:paddingTop="10dp"
+                        android:paddingLeft="10dp"
+                        android:textColor="@color/colorAccent" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#fff"
+                        android:clickable="true"
+                        android:elevation="4dp"
+                        android:text="Where"
+                        android:id="@+id/textView35"
+                        android:layout_weight="1"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="5dp"
+                        android:layout_marginBottom="5dp"/>
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#fff"
+                        android:clickable="true"
+                        android:elevation="4dp"
+                        android:text="Shibuya,Shunjuku"
+                        android:id="@+id/textView36"
+                        android:layout_weight="0.75"
+                        android:paddingTop="5dp"
+                        android:paddingLeft="10dp"
+                        android:layout_marginBottom="5dp"
+                        android:textColor="@color/colorAccent" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="0dp"
+                        android:background="#e5e5e5"
+                        android:clickable="true"
+                        android:elevation="4dp"
+                        android:text="As Teacher"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="5dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#fff"
+                        android:clickable="true"
+                        android:elevation="4dp"
+                        android:text="You teach"
+                        android:id="@+id/textView40"
+                        android:layout_weight="1"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="10dp" />
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#fff"
+                        android:clickable="true"
+                        android:elevation="4dp"
+                        android:text="English, Japanese"
+                        android:id="@+id/textView41"
+                        android:layout_weight="0.75"
+                        android:paddingTop="10dp"
+                        android:paddingLeft="10dp"
+                        android:textColor="@color/colorAccent"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#fff"
+                        android:clickable="true"
+                        android:elevation="4dp"
+                        android:text="Where to teach"
+                        android:id="@+id/textView42"
+                        android:layout_weight="1"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="5dp" />
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#fff"
+                        android:clickable="true"
+                        android:elevation="4dp"
+                        android:text="Shibuya,Shunjuku"
+                        android:id="@+id/textView44"
+                        android:layout_weight="0.75"
+                        android:paddingTop="5dp"
+                        android:paddingLeft="10dp"
+                        android:textColor="@color/colorAccent" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#fff"
+                        android:clickable="true"
+                        android:elevation="4dp"
+                        android:text="Teaching Fee"
+                        android:id="@+id/textView43"
+                        android:layout_weight="1"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="5dp" />
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#fff"
+                        android:clickable="true"
+                        android:elevation="4dp"
+                        android:text="4000yen"
+                        android:id="@+id/textView444"
+                        android:layout_weight="0.75"
+                        android:paddingTop="5dp"
+                        android:paddingLeft="10dp"
+                        android:textColor="@color/colorAccent" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#fff"
+                        android:clickable="true"
+                        android:text="Free time"
+                        android:id="@+id/textView49"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="5dp"
+                        android:layout_weight="1"
+                        android:paddingBottom="5dp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="#fff"
+                android:clickable="true"
+                android:elevation="4dp"
+                android:padding="20dp"
+                android:text="comment here"
+                android:layout_marginBottom="5dp" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/act_profilesetting_back_btn"
+            android:src="@drawable/abc_ic_commit_search_api_mtrl_alpha"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/act_profilesetting_edit_btn"
+            android:src="@android:drawable/ic_popup_sync"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+    </RelativeLayout>
+</ScrollView>

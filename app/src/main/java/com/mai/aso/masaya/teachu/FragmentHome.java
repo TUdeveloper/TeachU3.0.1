@@ -83,7 +83,7 @@ public class FragmentHome extends Fragment implements View.OnClickListener {
                 startActivity(intent_history);
                 break;
             case R.id.frag_home_profile_layout:
-                Intent intent_profile = new Intent(getActivity(), ActivityProfileSetting.class);
+                Intent intent_profile = new Intent(getActivity(), ActivityProfile.class);
                 startActivity(intent_profile);
                 break;
             case R.id.frag_home_schedule_layout:
