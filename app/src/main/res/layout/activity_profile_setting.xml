@@ -1054,7 +1054,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="#fff"
+                        android:background="#f0f8ff"
                         android:clickable="true"
                         android:text="Comment"
                         android:id="@+id/textView45"
@@ -1066,15 +1066,16 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <TextView
+            <EditText
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:background="#fff"
-                android:clickable="true"
+                android:background="@drawable/borderline"
+                android:clickable="false"
                 android:elevation="4dp"
-                android:padding="20dp"
-                android:text="comment here"
-                android:layout_marginBottom="5dp" />
+                android:gravity="top"
+                android:hint="comment here"
+                android:layout_marginBottom="5dp"
+                android:lines="5" />
 
         </LinearLayout>
 
