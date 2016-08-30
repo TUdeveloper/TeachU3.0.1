@@ -195,7 +195,7 @@
                         android:clickable="true"
                         android:elevation="4dp"
                         android:text="Japanese"
-                        android:id="@+id/textView23"
+                        android:id="@+id/act_proset_mothertongue_txt"
                         android:layout_weight="0.75"
                         android:paddingTop="10dp"
                         android:paddingLeft="10dp" />

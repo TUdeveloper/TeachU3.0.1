@@ -51,6 +51,7 @@ public class ActivityLanguageSetting extends AppCompatActivity {
         spinner_learn_language = (Spinner)findViewById(R.id.spinner_learn_language);
         spinner_learn_language2 = (Spinner)findViewById(R.id.spinner_learn_language2);
 
+        //アンドロイドで用意している国リストをaddする
         Locale[] locale = Locale.getAvailableLocales();
         ArrayList<String> countries = new ArrayList<String>();
         String country;

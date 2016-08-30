@@ -65,7 +65,7 @@ public class ActivityMeetingCard extends AppCompatActivity {
                 //ポップアップの表示メソッド
                 AlertDialog.Builder languagePopupBuilder = new AlertDialog.Builder(ActivityMeetingCard.this);
                 languagePopupBuilder.setTitle("Select Language");
-                languagePopupBuilder.setSingleChoiceItems(ItemLanguage, 0, new DialogInterface.OnClickListener(){
+                languagePopupBuilder.setSingleChoiceItems(ItemLanguage, -1, new DialogInterface.OnClickListener(){
                     public void onClick(DialogInterface dialog, int selected) {
                         //OKボタンが押された時の処理
                         selectedLanguage = ItemLanguage[selected].toString();

@@ -1,21 +1,26 @@
 package com.mai.aso.masaya.teachu;
 
+import android.app.AlertDialog;
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;
 import android.graphics.drawable.Drawable;
+import android.icu.text.LocaleDisplayNames;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.LocaleList;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -38,6 +43,9 @@ import com.google.firebase.storage.UploadTask;
 import com.mai.aso.masaya.teachu.ImageEdit.RoundImage;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Locale;
 
 /**
  * Created by MasayaAso on 7/24/16.
@@ -46,7 +54,7 @@ public class ActivityProfileSetting extends AppCompatActivity {
 
     private static final int RESULT_PICK_IMAGEFILE = 1001;
     private ImageView imageViewProfile;
-    private TextView btn_select_image;
+    private TextView textMotherTongue;
     private Uri m_uri;
     private static final int REQUEST_CHOOSER = 1000;
 
@@ -56,6 +64,9 @@ public class ActivityProfileSetting extends AppCompatActivity {
     private StorageReference mStorageReference;
     private StorageReference mStorageReferenceImages;
     private FloatingActionButton floatingActionButton;
+    private int i;
+    private String[] language_list;
+    private Locale loc;
     private static final String TAG = ActivityProfileSetting.class.getSimpleName();
     private boolean imageUploaded = false;
     private RoundImage roundImage;
@@ -64,7 +75,6 @@ public class ActivityProfileSetting extends AppCompatActivity {
     private ProgressBar progressBar;
     private Button btnLanguageSetting;
     private LoginButton loginButton;
-    private Spinner spinner_country, spinner_native_language, spinner_learn_language, spinner_learn_language2;
     private String setCountry, setNativeLanguage, setLearnLanguage, setLearnLanguage2;
     //private static final String TAG = ActivityLogin.class.getSimpleName();
 
@@ -79,8 +89,74 @@ public class ActivityProfileSetting extends AppCompatActivity {
         setContentView(R.layout.activity_profile_setting);
 
         imageViewProfile = (ImageView)findViewById(R.id.profile_image);
+        textMotherTongue = (TextView)findViewById(R.id.act_proset_mothertongue_txt);
         floatingActionButton = (FloatingActionButton)findViewById(R.id.floating_next_btn);
         //btn_select_image = (TextView)findViewById(R.id.btn_photo_from_gallery);
+
+        //アンドロイドが用意している言語リストをaddをする
+        //調節中！！！
+        Locale[] locale = Locale.getAvailableLocales();
+        final ArrayList<String> languages = new ArrayList<String>();
+        String language;
+        for( Locale loc : locale ){
+            language = loc.getDisplayLanguage();
+            //language = loc.getISO3Language();
+            if( language.length() > 0 && !languages.contains(language) ){
+                languages.add( language );
+            }
+        }
+        Collections.sort(languages, String.CASE_INSENSITIVE_ORDER);
+
+        final ArrayList<CharSequence> languages2 = new ArrayList<CharSequence>();
+        CharSequence language2;
+        for( Locale loc : locale ){
+            language2 = loc.getDisplayLanguage();
+            if( language2.length() > 0 && !languages.contains(language2) ){
+                languages2.add( language2 );
+            }
+        }
+        Collections.sort(languages, String.CASE_INSENSITIVE_ORDER);
+
+
+        final ArrayAdapter<String> languageAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, languages);
+        final ArrayAdapter<CharSequence> languageAdapter2 = new ArrayAdapter(this,android.R.layout.simple_list_item_1,languages2);
+        //final CharSequence[] items = languages2;
+        //String[] items = languages.
+
+
+        textMotherTongue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder languagePopupBuilder = new AlertDialog.Builder(ActivityProfileSetting.this);
+                languagePopupBuilder.setTitle("Select Your Mother Tongue");
+                languagePopupBuilder.setSingleChoiceItems(languageAdapter,-1, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+                //languagePopupBuilder.setAdapter(languageAdapter, new DialogInterface.OnClickListener() {
+                //    @Override
+                //    public void onClick(DialogInterface dialogInterface, int i) {
+                //
+                //    }
+                //});
+                languagePopupBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener(){
+                    public void onClick(DialogInterface dialog, int which) {
+                        //送信ボタンが押された時の処理
+                        Toast.makeText(ActivityProfileSetting.this, "ok selected", Toast.LENGTH_SHORT).show();
+                    }});
+                languagePopupBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
+                    public void onClick(DialogInterface dialog, int selected) {
+                        //キャンセルが押された時の処理
+                        Toast.makeText(ActivityProfileSetting.this, "cancel", Toast.LENGTH_SHORT).show();
+                    }});
+                languagePopupBuilder.setCancelable(false);
+                languagePopupBuilder.show();
+            }
+        });
+
         imageViewProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,6 +164,8 @@ public class ActivityProfileSetting extends AppCompatActivity {
             }
         });
 
+
+        //firebase のセッティング
         auth = FirebaseAuth.getInstance();
         user = FirebaseAuth.getInstance().getCurrentUser();
         storage = FirebaseStorage.getInstance();
