@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.content.ClipData;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -28,7 +30,7 @@ public class ActivityMeetingCard extends AppCompatActivity {
 
     //private Toolbar toolbar;
     private static final String TAG = ActivityMeetingCard.class.getSimpleName();
-    final CharSequence[] ItemLanguage = { "English", "Japanese", "Chinese"};
+    final CharSequence[] ItemLanguage = {"English", "Japanese", "Chinese"};
     private String selectedLanguage;
     private ImageView btn_language, btn_location, btn_calendar;
     private TextView txt_language;
@@ -40,19 +42,11 @@ public class ActivityMeetingCard extends AppCompatActivity {
         setContentView(R.layout.activity_meeting_card);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_meeting_card);
-        toolbar.setLogo(R.drawable.ic_back_btn);
+        //toolbar.getBackground().setAlpha(100);
+        //toolbar.setLogo(R.drawable.ic_back_btn);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        //阿蘓
-        //toolbarの戻るボタンで戻る
-        View logoView = getToolbarLogoIcon(toolbar);
-        logoView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-                //logo clicked
-            }
-        });
 
         btn_language = (ImageView)findViewById(R.id.language_select);
         btn_location = (ImageView)findViewById(R.id.location_select);
@@ -142,6 +136,10 @@ public class ActivityMeetingCard extends AppCompatActivity {
                 sendPopupBuilder.setCancelable(false);
                 sendPopupBuilder.show();
 
+                return true;
+            //戻るボタンで一つまえのアクティビティに戻る
+            case android.R.id.home:
+                finish();
                 return true;
         }
         return super.onOptionsItemSelected(item);

@@ -11,6 +11,23 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/appbar_profile"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_toolbar_translucent"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar_profile"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:layout_scrollFlags="scroll|enterAlways"
+                app:popupTheme="@style/AppTheme.PopupOverlay"
+                android:nestedScrollingEnabled="false">
+            </android.support.v7.widget.Toolbar>
+        </android.support.design.widget.AppBarLayout>
+
         <ImageView
             android:id="@+id/header_cover_image"
             android:layout_width="match_parent"
@@ -572,20 +589,21 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/act_profilesetting_back_btn"
-            android:src="@drawable/abc_ic_commit_search_api_mtrl_alpha"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/act_profilesetting_edit_btn"
+            android:id="@+id/act_profile_edit_btn"
             android:src="@android:drawable/ic_popup_sync"
-            android:layout_alignParentTop="true"
+            android:layout_alignTop="@+id/profile_image"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/act_profile_back_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#00000000"
+            android:src="@drawable/abc_ic_commit_search_api_mtrl_alpha"
+            android:layout_alignTop="@+id/profile_image"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
     </RelativeLayout>
 </ScrollView>

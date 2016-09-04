@@ -2,12 +2,8 @@ package com.mai.aso.masaya.teachu;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -15,29 +11,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 import com.facebook.login.widget.LoginButton;
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthCredential;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.mai.aso.masaya.teachu.info.FirebaseInfo;
+import com.mai.aso.masaya.teachu.info.FbInfo;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.lang.Object;
 import java.util.Calendar;
-import java.util.Collections;
-import java.util.Locale;
-import java.util.logging.LogManager;
 
 /**
  * Created by MasayaAso on 7/3/16.
@@ -173,10 +157,10 @@ public class ActivityUserSetting extends AppCompatActivity {
                 setBirthday = (setMonth + "/" + setDay + "/" + setYear);
 
                 progressBar.setVisibility(View.VISIBLE);
-                mRootRef.child(FirebaseInfo.CHILD_USERS).child(user.getUid()).child(FirebaseInfo.USER_FIRST_NAME).setValue(first_name);
-                mRootRef.child(FirebaseInfo.CHILD_USERS).child(user.getUid()).child(FirebaseInfo.USER_LAST_NAME).setValue(last_name);
-                mRootRef.child(FirebaseInfo.CHILD_USERS).child(user.getUid()).child(FirebaseInfo.USER_GENDER).setValue(setGender);
-                mRootRef.child(FirebaseInfo.CHILD_USERS).child(user.getUid()).child(FirebaseInfo.USER_BIRTHDAY).setValue(setBirthday);
+                mRootRef.child(FbInfo.CHILD_USERS).child(user.getUid()).child(FbInfo.USER_FIRST_NAME).setValue(first_name);
+                mRootRef.child(FbInfo.CHILD_USERS).child(user.getUid()).child(FbInfo.USER_LAST_NAME).setValue(last_name);
+                mRootRef.child(FbInfo.CHILD_USERS).child(user.getUid()).child(FbInfo.USER_GENDER).setValue(setGender);
+                mRootRef.child(FbInfo.CHILD_USERS).child(user.getUid()).child(FbInfo.USER_BIRTHDAY).setValue(setBirthday);
                 progressBar.setVisibility(View.GONE);
 
                 Intent intent = new Intent(ActivityUserSetting.this, ActivityLanguageSetting.class);

@@ -3,6 +3,7 @@ package com.mai.aso.masaya.teachu;
 import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -28,6 +29,7 @@ public class ActivityMainTab extends AppCompatActivity {
     private static final String TAG = ActivityMainTab.class.getSimpleName();
     private ViewPager viewPager;
     private Toolbar toolbar;
+    private CollapsingToolbarLayout toolbarLayout;
     private TabLayout tabLayout;
     private int[] tabIcon = {
             R.drawable.ic_public_2,
@@ -41,6 +43,8 @@ public class ActivityMainTab extends AppCompatActivity {
         setContentView(R.layout.activity_main_tab);
         //setContentView(R.layout.toolbar_bottom);
 
+        //toolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.toolbar2);
+        //setSupportActionBar(toolbarLayout);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         //getSupportActionBar().setHomeButtonEnabled(true);

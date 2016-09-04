@@ -17,8 +17,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import com.mai.aso.masaya.teachu.info.FirebaseInfo;
+import com.mai.aso.masaya.teachu.info.FbInfo;
 
 /**
  * Created by MasayaAso on 7/3/16.
@@ -91,7 +90,7 @@ public class ActivitySignup extends AppCompatActivity {
                                     Toast.makeText(ActivitySignup.this, "Authentication failed" + task.getException(),
                                             Toast.LENGTH_SHORT).show();
                                 }else {
-                                    mRootRef.child(FirebaseInfo.CHILD_USERS).child(task.getResult().getUser().getUid()).child(FirebaseInfo.USER_EMAIL).setValue(email);
+                                    mRootRef.child(FbInfo.CHILD_USERS).child(task.getResult().getUser().getUid()).child(FbInfo.USER_EMAIL).setValue(email);
                                     Intent intent = new Intent(ActivitySignup.this, ActivityUserSetting.class);
                                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);

@@ -45,7 +45,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.mai.aso.masaya.teachu.info.FirebaseInfo;
+import com.mai.aso.masaya.teachu.info.FbInfo;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -67,6 +67,7 @@ public class ActivityLogin extends AppCompatActivity {
     private FirebaseAuth auth;
     private FirebaseUser user;
     private FirebaseStorage storage;
+    private DatabaseReference mGeneral, mTeacher, mStudent, mFavorite, mChatRoom, mMeetingCard;
     private StorageReference mStorageReference;
     private StorageReference mStorageReferenceImages;
     private ProgressBar progressBar;
@@ -260,12 +261,62 @@ public class ActivityLogin extends AppCompatActivity {
                                 }*/
                                 //Facebookでログインした後にfirebaseに以下の情報を登録しているemail, first name last name birthday gender
                                 //増やす可能性あり
-                                mRootRef.child(FirebaseInfo.CHILD_USERS).child(user.getUid()).child(FirebaseInfo.USER_EMAIL).setValue(email);
-                                mRootRef.child(FirebaseInfo.CHILD_USERS).child(user.getUid()).child(FirebaseInfo.USER_FIRST_NAME).setValue(firstname);
-                                mRootRef.child(FirebaseInfo.CHILD_USERS).child(user.getUid()).child(FirebaseInfo.USER_LAST_NAME).setValue(lastname);
-                                mRootRef.child(FirebaseInfo.CHILD_USERS).child(user.getUid()).child(FirebaseInfo.USER_BIRTHDAY).setValue(birthday);
-                                mRootRef.child(FirebaseInfo.CHILD_USERS).child(user.getUid()).child(FirebaseInfo.USER_GENDER).setValue(gender);
+                                mGeneral = mRootRef.child(FbInfo.USERS).child(user.getUid()).child(FbInfo.USERS_GENERAL);
+                                mTeacher = mRootRef.child(FbInfo.USERS).child(user.getUid()).child(FbInfo.USERS_TEACHER);
+                                mStudent = mRootRef.child(FbInfo.USERS).child(user.getUid()).child(FbInfo.USERS_STUDENT);
+                                mFavorite = mRootRef.child(FbInfo.USERS).child(user.getUid()).child(FbInfo.USERS_FAVORITE);
+                                mChatRoom = mRootRef.child(FbInfo.USERS).child(user.getUid()).child(FbInfo.USERS_CHAT_ROOM);
+                                mMeetingCard = mRootRef.child(FbInfo.USERS).child(user.getUid()).child(FbInfo.USERS_MEETING_CARD);
+                                //generalの情報
+                                mGeneral.child(FbInfo.GEN_FIRST_NAME).setValue(firstname);
+                                mGeneral.child(FbInfo.GEN_LAST_NAME).setValue(lastname);
+                                mGeneral.child(FbInfo.GEN_EMAIL).setValue(email);
+                                mGeneral.child(FbInfo.GEN_GENDER).setValue(gender);
+                                mGeneral.child(FbInfo.GEN_BIRTHDAY).setValue(birthday);
+                                mGeneral.child(FbInfo.GEN_MOTHER_TONGUE).setValue(null);
+                                mGeneral.child(FbInfo.GEN_LOCATION).setValue(null);
+                                mGeneral.child(FbInfo.GEN_SCHOOL).setValue(null);
+                                mGeneral.child(FbInfo.GEN_JOB).setValue(null);
+                                mGeneral.child(FbInfo.GEN_TEACHER).setValue(true);
+                                mGeneral.child(FbInfo.GEN_STUDENT).setValue(true);
 
+                                //Teacher用の情報
+                                mTeacher.child(FbInfo.TEACH_RATE).setValue("5");
+                                mTeacher.child(FbInfo.TEACH_EXPERIENCE).setValue("0");
+                                mTeacher.child(FbInfo.TEACH_TEACH_LANGUAGE).setValue(null);
+                                mTeacher.child(FbInfo.TEACH_WHERE).child(FbInfo.TEACH_WHERE_1).setValue(null);
+                                mTeacher.child(FbInfo.TEACH_WHERE).child(FbInfo.TEACH_WHERE_1).setValue(null);
+                                mTeacher.child(FbInfo.TEACH_WHERE).child(FbInfo.TEACH_WHERE_1).setValue(null);
+                                mTeacher.child(FbInfo.TEACH_FEE).child(FbInfo.FEE_CURRENCY).setValue("Japanese");// TODO:直接文字の入力は避ける
+                                mTeacher.child(FbInfo.TEACH_FEE).child(FbInfo.FEE_FEE).setValue(null);
+                                mTeacher.child(FbInfo.TEACH_FREE_TIME).child(FbInfo.TEACH_FREE_MON).setValue(null);
+                                mTeacher.child(FbInfo.TEACH_FREE_TIME).child(FbInfo.TEACH_FREE_TUE).setValue(null);
+                                mTeacher.child(FbInfo.TEACH_FREE_TIME).child(FbInfo.TEACH_FREE_WED).setValue(null);
+                                mTeacher.child(FbInfo.TEACH_FREE_TIME).child(FbInfo.TEACH_FREE_THU).setValue(null);
+                                mTeacher.child(FbInfo.TEACH_FREE_TIME).child(FbInfo.TEACH_FREE_FRI).setValue(null);
+                                mTeacher.child(FbInfo.TEACH_FREE_TIME).child(FbInfo.TEACH_FREE_SAT).setValue(null);
+                                mTeacher.child(FbInfo.TEACH_FREE_TIME).child(FbInfo.TEACH_FREE_SUN).setValue(null);
+                                mTeacher.child(FbInfo.TEACH_PRO).setValue(false);
+                                mTeacher.child(FbInfo.TEACH_KATEI).setValue(false);
+                                mTeacher.child(FbInfo.TEACH_COMMENT).setValue("comment here");
+
+                                mStudent.child(FbInfo.STUD_LEARN_LANGUAGE).setValue("Englsih");
+                                mStudent.child(FbInfo.LEARN_WHERE).child(FbInfo.LEARN_WHERE_1).setValue("Shibuya");
+                                mStudent.child(FbInfo.LEARN_WHERE).child(FbInfo.LEARN_WHERE_2).setValue(null);
+                                mStudent.child(FbInfo.LEARN_WHERE).child(FbInfo.LEARN_WHERE_3).setValue(null);
+                                mStudent.child(FbInfo.LEARN_FREE_TIME).child(FbInfo.LEARN_FREE_MON).setValue(null);
+                                mStudent.child(FbInfo.LEARN_FREE_TIME).child(FbInfo.LEARN_FREE_TUE).setValue(null);
+                                mStudent.child(FbInfo.LEARN_FREE_TIME).child(FbInfo.LEARN_FREE_WED).setValue(null);
+                                mStudent.child(FbInfo.LEARN_FREE_TIME).child(FbInfo.LEARN_FREE_THU).setValue(null);
+                                mStudent.child(FbInfo.LEARN_FREE_TIME).child(FbInfo.LEARN_FREE_FRI).setValue(null);
+                                mStudent.child(FbInfo.LEARN_FREE_TIME).child(FbInfo.LEARN_FREE_SAT).setValue(null);
+                                mStudent.child(FbInfo.LEARN_FREE_TIME).child(FbInfo.LEARN_FREE_SUN).setValue(null);
+
+                                // TODO:考える必要ありPushの方法
+                                mFavorite.setValue(null);
+                                mChatRoom.child("1").setValue("sample");
+                                mChatRoom.push().child("1").setValue("sample2");
+                                mMeetingCard.setValue(null);
                                 //Toast.makeText(ActivityLogin.this, birthday, Toast.LENGTH_LONG).show();
                             }
                         });
@@ -283,7 +334,8 @@ public class ActivityLogin extends AppCompatActivity {
                 //new LoadImage().execute(ResourceUrl);
 
                 //他のアクティビティへ飛ぶ
-                Intent intent = new Intent(ActivityLogin.this, ActivityProfileSetting.class);
+                //Intent intent = new Intent(ActivityLogin.this, ActivityProfileSetting.class);
+                Intent intent = new Intent(ActivityLogin.this, ActivityLanguageSetting.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);

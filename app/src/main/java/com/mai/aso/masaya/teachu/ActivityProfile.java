@@ -11,7 +11,10 @@ import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -72,8 +75,15 @@ public class ActivityProfile extends AppCompatActivity {
         //set the view
         setContentView(R.layout.activity_profile);
 
-        backButton = (ImageView)findViewById(R.id.act_profilesetting_back_btn);
-        editButton = (ImageView)findViewById(R.id.act_profilesetting_edit_btn);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_profile);
+        //toolbar.getBackground().setAlpha(100);
+        //toolbar.setLogo(R.drawable.ic_friend_1_white);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        backButton = (ImageView)findViewById(R.id.act_profile_back_btn);
+        editButton = (ImageView)findViewById(R.id.act_profile_edit_btn);
         //btn_select_image = (TextView)findViewById(R.id.btn_photo_from_gallery);
 
         auth = FirebaseAuth.getInstance();
@@ -96,6 +106,27 @@ public class ActivityProfile extends AppCompatActivity {
         });
     }
 
+    //今はmeeting card menuを使ってるけど、変更させる必要あり！
+    // TODO:阿蘓 プロフィール用のmenu_profile
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //ミーティングカード用のメニュータブをセレクト
+        getMenuInflater().inflate(R.menu.menu_meeting_card, menu);
+
+        return true;
+    }
+
+    //戻るボタンを押したときに前のアクティビティに戻る（注意：R.id.では無くandroid.R.idってなってる）
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
 }
 

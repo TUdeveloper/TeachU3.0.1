@@ -15,7 +15,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.mai.aso.masaya.teachu.info.FirebaseInfo;
+import com.mai.aso.masaya.teachu.info.FbInfo;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -146,13 +146,13 @@ public class ActivityLanguageSetting extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 progressBar.setVisibility(View.VISIBLE);
-                mRootRef.child(FirebaseInfo.CHILD_USERS).child(user.getUid()).child(FirebaseInfo.USER_COUNTRY).setValue(setCountry);
-                mRootRef.child(FirebaseInfo.CHILD_USERS).child(user.getUid()).child(FirebaseInfo.USER_NATIVE_LANGUAGE).setValue(setNativeLanguage);
-                mRootRef.child(FirebaseInfo.CHILD_USERS).child(user.getUid()).child(FirebaseInfo.USER_LEARN_LANGUAGE).setValue(setLearnLanguage);
-                mRootRef.child(FirebaseInfo.CHILD_USERS).child(user.getUid()).child(FirebaseInfo.USER_LEARN_LANGUAGE2).setValue(setLearnLanguage2);
+                mRootRef.child(FbInfo.CHILD_USERS).child(user.getUid()).child(FbInfo.USER_COUNTRY).setValue(setCountry);
+                mRootRef.child(FbInfo.CHILD_USERS).child(user.getUid()).child(FbInfo.USER_NATIVE_LANGUAGE).setValue(setNativeLanguage);
+                mRootRef.child(FbInfo.CHILD_USERS).child(user.getUid()).child(FbInfo.USER_LEARN_LANGUAGE).setValue(setLearnLanguage);
+                mRootRef.child(FbInfo.CHILD_USERS).child(user.getUid()).child(FbInfo.USER_LEARN_LANGUAGE2).setValue(setLearnLanguage2);
                 progressBar.setVisibility(View.GONE);
 
-                Intent intent = new Intent(ActivityLanguageSetting.this, ActivityProfileSetting.class);
+                Intent intent = new Intent(ActivityLanguageSetting.this, ActivityMainTab.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);

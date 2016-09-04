@@ -26,7 +26,8 @@ public class StartUp extends Activity {
     View.OnClickListener handler = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(StartUp.this, ActivityMainTab.class);
+            //Intent intent = new Intent(StartUp.this, ActivityMainTab.class);
+            Intent intent = new Intent(StartUp.this, ActivityLogin.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
