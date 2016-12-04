@@ -146,10 +146,11 @@ public class ActivityLanguageSetting extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 progressBar.setVisibility(View.VISIBLE);
-                mRootRef.child(FbInfo.CHILD_USERS).child(user.getUid()).child(FbInfo.USER_COUNTRY).setValue(setCountry);
-                mRootRef.child(FbInfo.CHILD_USERS).child(user.getUid()).child(FbInfo.USER_NATIVE_LANGUAGE).setValue(setNativeLanguage);
-                mRootRef.child(FbInfo.CHILD_USERS).child(user.getUid()).child(FbInfo.USER_LEARN_LANGUAGE).setValue(setLearnLanguage);
-                mRootRef.child(FbInfo.CHILD_USERS).child(user.getUid()).child(FbInfo.USER_LEARN_LANGUAGE2).setValue(setLearnLanguage2);
+
+                //mRootRef.child(FbInfo.CHILD_USERS).child(user.getUid()).child(FbInfo.USER_COUNTRY).setValue(setCountry);
+                //mRootRef.child(FbInfo.CHILD_USERS).child(user.getUid()).child(FbInfo.USER_NATIVE_LANGUAGE).setValue(setNativeLanguage);
+                //mRootRef.child(FbInfo.CHILD_USERS).child(user.getUid()).child(FbInfo.USER_LEARN_LANGUAGE).setValue(setLearnLanguage);
+                //mRootRef.child(FbInfo.CHILD_USERS).child(user.getUid()).child(FbInfo.USER_LEARN_LANGUAGE2).setValue(setLearnLanguage2);
                 progressBar.setVisibility(View.GONE);
 
                 Intent intent = new Intent(ActivityLanguageSetting.this, ActivityMainTab.class);

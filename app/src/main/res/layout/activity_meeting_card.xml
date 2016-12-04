@@ -83,8 +83,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Mai Oobayashi"
-                android:id="@+id/textView2"
+                android:text="Teacher"
+                android:id="@+id/act_mc_txt_teacher"
                 android:layout_below="@+id/imageView2"
                 android:layout_alignLeft="@+id/imageView2"
                 android:layout_alignStart="@+id/imageView2" />
@@ -93,8 +93,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Masaya Aso"
-                android:id="@+id/textView3"
+                android:text="Student"
+                android:id="@+id/act_mc_txt_student"
                 android:layout_below="@+id/imageView3"
                 android:layout_alignLeft="@+id/imageView3"
                 android:layout_alignStart="@+id/imageView3" />
@@ -103,7 +103,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="2000 yen / hour"
+                android:text="Fee"
                 android:id="@+id/textView16"
                 android:layout_alignParentBottom="true"
                 android:layout_toRightOf="@+id/imageView2"
@@ -113,7 +113,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="2016/08/30 14:00 - 16:30"
+                android:text="Date"
                 android:id="@+id/textView17"
                 android:layout_above="@+id/textView16"
                 android:layout_alignLeft="@+id/textView16"
@@ -123,8 +123,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Shibuya, Bosch Cafe"
-                android:id="@+id/textView18"
+                android:text="Location"
+                android:id="@+id/act_mc_txt_location"
                 android:layout_above="@+id/textView17"
                 android:layout_alignLeft="@+id/textView17"
                 android:layout_alignStart="@+id/textView17" />
@@ -134,10 +134,10 @@
                 android:layout_height="20dp"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="Language"
-                android:id="@+id/txt_language"
-                android:layout_above="@+id/textView18"
-                android:layout_alignLeft="@+id/textView18"
-                android:layout_alignStart="@+id/textView18" />
+                android:id="@+id/act_mc_txt_language"
+                android:layout_above="@+id/act_mc_txt_location"
+                android:layout_alignLeft="@+id/act_mc_txt_location"
+                android:layout_alignStart="@+id/act_mc_txt_location" />
 
         </RelativeLayout>
 

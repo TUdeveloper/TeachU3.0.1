@@ -5,6 +5,7 @@ package com.mai.aso.masaya.teachu.info;
  */
 public class FbInfo {
     //Firebase上でのキーの名前はここから参照する事
+
     //Users
     public static final String USERS="users";
     public static final String USERS_GENERAL="general";
@@ -82,10 +83,19 @@ public class FbInfo {
             public static final String NOT_DONE_TEACHER="teacher";
             public static final String NOT_DONE_STUDENT="student";
             public static final String NOT_DONE_WHAT="what";
-            public static final String NOT_DONE_WHERE="where";
+            public static final String NOT_DONE_WHERE_NAME="where_name";
+            public static final String NOT_DONE_WHERE_ADDRESS="where_address";
+            public static final String NOT_DONE_WHERE_LAT="where_lat";
+            public static final String NOT_DONE_WHERE_LNG="where_lng";
             public static final String NOT_DONE_WHEN="when";
             public static final String NOT_DONE_TIME="time";
             public static final String NOT_DONE_FEE="fee";
+            public static final String NOT_DONE_ACCEPT_TEACHER = "accept_teacher";
+            public static final String NOT_DONE_ACCEPT_STUDENT = "accept_student";
+            public static final String NOT_DONE_STATUS_DONE = "status_done";
+            public static final String NOT_DONE_STATUS_PAY = "status_pay";
+            public static final String NOT_DONE_COMMENT = "comment";
+
         public static final String MEETING_CARD_DONE="done";
 
     //Chat Room
@@ -103,4 +113,8 @@ public class FbInfo {
     public static final String USER_NATIVE_LANGUAGE="native_language";
     public static final String USER_LEARN_LANGUAGE="learn_language";
     public static final String USER_LEARN_LANGUAGE2="learn_language2";
+
+    //TimeStamp
+    public static final String TIME_STAMP = "time_stamp";
+    public static final String NULL_NULL = "null";
 }

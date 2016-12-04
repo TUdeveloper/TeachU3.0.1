@@ -107,10 +107,10 @@ public class ActivityLogin extends AppCompatActivity {
         //get firebase auth instance
         //ここから４つ下までは、もし権限があればすぐにメインのタブに飛ぶ
         //今は開発段階なので、コメントアウトしている
-        //if (auth.getCurrentUser() != null) {
-        //    startActivity(new Intent(ActivityLogin.this, ActivityMainTab.class));
-        //    finish();
-        //}
+        if (auth.getCurrentUser() != null) {
+            startActivity(new Intent(ActivityLogin.this, ActivityMainTab.class));
+            finish();
+        }
         //set the view
         setContentView(R.layout.activity_login);
 
@@ -314,8 +314,8 @@ public class ActivityLogin extends AppCompatActivity {
 
                                 // TODO:考える必要ありPushの方法
                                 mFavorite.setValue(null);
-                                mChatRoom.child("1").setValue("sample");
-                                mChatRoom.push().child("1").setValue("sample2");
+                                //mChatRoom.child("1").setValue("sample");
+                                //mChatRoom.push().child("1").setValue("sample2");
                                 mMeetingCard.setValue(null);
                                 //Toast.makeText(ActivityLogin.this, birthday, Toast.LENGTH_LONG).show();
                             }
